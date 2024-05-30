@@ -1,7 +1,10 @@
+import { useUserInfo } from '@/store/userInfo'
+
 export default function Dashboard () {
+  const userInfo = useUserInfo((state) => state.user)
   return (
-    <div>
-      Dashboard
-    </div>
+    <section className='w-full h-full p-4'>
+      Bienvenido {userInfo?.name}
+    </section>
   )
 }

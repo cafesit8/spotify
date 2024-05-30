@@ -3,9 +3,11 @@ import { ChangeEvent, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createUser } from '@/services/createUser'
+// import { createUser } from '@/services/createUser'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
+import { registerUser } from '@/services/registerUser'
+import { useUserInfo } from '@/store/userInfo'
 
 const STATUS = {
   IDLE: 'idle',
@@ -32,6 +34,7 @@ export default function useRegister () {
   const { register, handleSubmit, formState: { errors, isSubmitting }, setValue } = useForm<FormFields>({
     resolver: zodResolver(schema)
   })
+  const updateUserInfo = useUserInfo((state) => state.setUser)
   const navigate = useNavigate()
   async function handleFileChange (event: ChangeEvent<HTMLInputElement>) {
     const formData = new FormData()
@@ -54,22 +57,18 @@ export default function useRegister () {
     }
   }
 
-  const formatDateToTimestamp = (date: Date) => {
-    const pad = (n: number) => n < 10 ? '0' + n : n
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ` +
-      `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`
-  }
-
   const sendData: SubmitHandler<FormFields> = async (data) => {
-    const date = formatDateToTimestamp(new Date())
-    const dataToSend = { ...data, created_at: date }
     try {
-      toast.promise(createUser(dataToSend), {
+      toast.promise(registerUser(data), {
         loading: 'Creando usuario...',
-        success: 'Usuario creado correctamente',
+        success: (info) => {
+          updateUserInfo(info)
+          localStorage.setItem('acces_token', info.access_token)
+          navigate('/dashboard')
+          return 'Usuario creado correctamente'
+        },
         error: 'Error al crear usuario'
       })
-      navigate('/dashboard')
     } catch (error: any) {
       toast.error(error.message)
     }

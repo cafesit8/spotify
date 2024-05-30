@@ -9,6 +9,7 @@ type Props = {
 
 export default function Row ({ song, collapse }: Props) {
   const setCurrentMusic = useCurrentMusicInfo((state) => state.setCurrentMusic)
+  const currentMusic = useCurrentMusicInfo((state) => state.currentMusic)
 
   return (
     <tr onClick={() => setCurrentMusic(song)} className='hover:bg-[#222222] duration-200 cursor-pointer'>
@@ -18,7 +19,7 @@ export default function Row ({ song, collapse }: Props) {
             <img className='w-full h-full object-cover' src={song.song_cover.url} alt="" />
           </picture>
           <div>
-            <h5 className='font-light text-white text-base'>{song.name}</h5>
+            <h5 className={`${currentMusic?.name === song.name ? 'text-green-500' : 'text-white'} font-light text-base`}>{song.name}</h5>
             <h6 className='font-light text-white/80 text-sm'>{song.artist}</h6>
           </div>
         </article>
