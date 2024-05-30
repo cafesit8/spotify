@@ -10,18 +10,16 @@ export interface InputProps
   errors: any,
   label?: string,
   register: any,
-  fn?: (e: any) => void
 }
 
 export function Input (props: InputProps) {
-  const { label, errors, name, register, fn, type = 'text', className, ...restprops } = props
+  const { label, errors, name, register, type = 'text', className, ...restprops } = props
   const errorValidation = errors[name]?.message?.length > 0
   return (
     <>
       <label>
         {label}
         <input
-          onChange={fn}
           type={type}
           {...register(name)}
           className={cn(

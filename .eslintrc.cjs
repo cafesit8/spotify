@@ -17,5 +17,6 @@ module.exports = {
     ],
     '@typescript-eslint/no-explicit-any': 'off',
     'indent': 'off',
+    'eqeqeq': 'off',
   },
 }

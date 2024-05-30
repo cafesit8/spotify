@@ -19,10 +19,10 @@ export default function PlayList ({ handleCollapse, collapse }: Props) {
       <div>
         <div className='relative'>
           <Input onChange={handleInputChange} className='pr-9 text-white/80 opacity-80' errors={errors} name='search' register={register} placeholder='Buscar canción' />
-          <SearchIcon className='absolute right-2 top-0 bottom-0 m-auto' />
+          <SearchIcon className='absolute text-white/70 right-2 top-0 bottom-0 m-auto' />
         </div>
       </div>
-      <div>
+      <div className='overflow-y-auto'>
         <Table collapse={collapse} musicFiltered={musicFiltered} />
       </div>
     </aside>
