@@ -8,7 +8,7 @@ type Props = {
 
 export default function Table ({ collapse, musicFiltered }: Props) {
   return (
-    <table className='w-full'>
+    <table className={`${collapse ? 'divide-y' : ''} w-full divide-white/40`}>
       <thead>
         {collapse && (
           <tr>
@@ -19,6 +19,7 @@ export default function Table ({ collapse, musicFiltered }: Props) {
         )}
       </thead>
       <tbody>
+        <tr className='h-2'></tr>
         {musicFiltered?.map(song => (
           <Row key={song.id} collapse={collapse} song={song} />
         ))}

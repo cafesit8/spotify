@@ -13,7 +13,7 @@ export default function Row ({ song, collapse }: Props) {
 
   return (
     <tr onClick={() => setCurrentMusic(song)} className='hover:bg-[#222222] duration-200 cursor-pointer'>
-      <td>
+      <td className={`${collapse ? 'rounded-tr-none rounded-br-none' : 'rounded-tr-lg rounded-br-lg'} rounded-tl-lg rounded-bl-lg`}>
         <article className='flex p-2 gap-4 rounded-lg text-white'>
           <picture className='w-12 h-12 overflow-hidden block rounded-md'>
             <img className='w-full h-full object-cover' src={song.song_cover.url} alt="" />
@@ -31,7 +31,7 @@ export default function Row ({ song, collapse }: Props) {
               <h5 className='font-light text-white/70 text-sm'>{convertDate(song.realease_date)}</h5>
             </article>
           </td>
-          <td>
+          <td className='rounded-tr-lg rounded-br-lg'>
             <article className='text-center'>
               <h5 className='font-light text-white/70 text-sm'>@{song.user.username}</h5>
             </article>

@@ -5,7 +5,7 @@ export default function NavBar () {
   const userInfo = useUserInfo((state) => state.user)
   return (
     <nav className='flex justify-between items-center'>
-      <span>{userInfo?.name}, Bienvenido a Spotify</span>
+      <span className='font-semibold text-2xl'>{userInfo?.name}, Bienvenido a Spotify</span>
       <div className='flex gap-3'>
         <Button className='rounded-full px-5'>Subir Canción</Button>
         <button className='block w-9 h-9 rounded-full overflow-hidden hover:scale-105 duration-150'>
