@@ -5,4 +5,5 @@ export type User = {
   username: string
   email: string
   created_at: string
+  photo_profile: string
 }
