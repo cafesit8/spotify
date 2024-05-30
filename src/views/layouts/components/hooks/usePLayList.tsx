@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 
 export default function usePLayList () {
   const [musicList, setMusicList] = useState<Data>()
+  const [loading, setLoading] = useState(true)
   const [musicFiltered, setMusicFiltered] = useState<Music[]>()
   const { register, formState: { errors } } = useForm()
 
@@ -17,6 +18,7 @@ export default function usePLayList () {
         throw new Error('Error fetching music list')
       }
       const result = await res.json() as Response
+      setLoading(false)
       setMusicList(result.data)
       setMusicFiltered(result.data.data)
     }
@@ -35,6 +37,7 @@ export default function usePLayList () {
     register,
     errors,
     handleInputChange,
-    musicFiltered
+    musicFiltered,
+    loading
   }
 }

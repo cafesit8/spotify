@@ -9,7 +9,7 @@ type Props = {
 }
 
 export default function PlayList ({ handleCollapse, collapse }: Props) {
-  const { errors, register, handleInputChange, musicFiltered } = usePLayList()
+  const { errors, register, handleInputChange, musicFiltered, loading } = usePLayList()
   return (
     <aside className='[grid-area:playlist] playlist bg-[#141414] rounded-xl p-5 text-white flex flex-col gap-4'>
       <div className='flex justify-between text-white/70'>
@@ -23,7 +23,21 @@ export default function PlayList ({ handleCollapse, collapse }: Props) {
         </div>
       </div>
       <div className='overflow-y-auto'>
-        <Table collapse={collapse} musicFiltered={musicFiltered} />
+        {loading
+          ? (
+            <div className='flex flex-col gap-2'>
+              <div className='w-full h-14 animate-pulse bg-[#222222] rounded-lg'></div>
+              <div className='w-full h-14 animate-pulse bg-[#222222] rounded-lg'></div>
+              <div className='w-full h-14 animate-pulse bg-[#222222] rounded-lg'></div>
+              <div className='w-full h-14 animate-pulse bg-[#222222] rounded-lg'></div>
+              <div className='w-full h-14 animate-pulse bg-[#222222] rounded-lg'></div>
+              <div className='w-full h-14 animate-pulse bg-[#222222] rounded-lg'></div>
+              <div className='w-full h-14 animate-pulse bg-[#222222] rounded-lg'></div>
+            </div>
+          )
+          : (
+            <Table collapse={collapse} musicFiltered={musicFiltered} />
+          )}
       </div>
     </aside>
   )
