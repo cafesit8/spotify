@@ -1,12 +1,12 @@
-import { Data } from '@/types/musicList'
+import { Music } from '@/types/musicList'
 import Row from './Row'
 
 type Props = {
   collapse?: boolean
-  musicList?: Data
+  musicFiltered?: Music[]
 }
 
-export default function Table ({ collapse, musicList }: Props) {
+export default function Table ({ collapse, musicFiltered }: Props) {
   return (
     <table className='w-full'>
       <thead>
@@ -19,7 +19,7 @@ export default function Table ({ collapse, musicList }: Props) {
         )}
       </thead>
       <tbody>
-        {musicList?.data.map(song => (
+        {musicFiltered?.map(song => (
           <Row key={song.id} collapse={collapse} song={song} />
         ))}
       </tbody>

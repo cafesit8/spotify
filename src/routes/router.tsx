@@ -5,6 +5,7 @@ const Login = lazy(() => import('@/views/public/Login/Login'))
 const Register = lazy(() => import('@/views/public/Register/Register'))
 const DashboardLayout = lazy(() => import('@/views/layouts/DashboardLayout'))
 const Dashboard = lazy(() => import('@/views/private/Dashboard/Dashboard'))
+const Search = lazy(() => import('@/views/private/Search/Search'))
 
 export const routes = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ export const routes = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Suspense fallback={null}><Dashboard /></Suspense>,
+        errorElement: <Error />
+      },
+      {
+        path: '/dashboard/search',
+        element: <Suspense fallback={null}><Search /></Suspense>,
         errorElement: <Error />
       }
     ]

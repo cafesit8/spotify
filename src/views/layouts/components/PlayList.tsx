@@ -9,21 +9,21 @@ type Props = {
 }
 
 export default function PlayList ({ handleCollapse, collapse }: Props) {
-  const { errors, register, musicList } = usePLayList()
+  const { errors, register, handleInputChange, musicFiltered } = usePLayList()
   return (
     <aside className='[grid-area:playlist] playlist bg-[#141414] rounded-xl p-5 text-white flex flex-col gap-4'>
       <div className='flex justify-between text-white/70'>
         <h3 className='flex gap-4 font-semibold'><BookIcon /> Lista de Música</h3>
         <button onClick={handleCollapse}>{collapse ? <ArrowLeftIcon /> : <ArrowRightIcon />}</button>
       </div>
-      <form>
+      <div>
         <div className='relative'>
-          <Input className='pr-9 text-white/80 opacity-80' errors={errors} name='search' register={register} placeholder='Buscar canción' />
+          <Input onChange={handleInputChange} className='pr-9 text-white/80 opacity-80' errors={errors} name='search' register={register} placeholder='Buscar canción' />
           <SearchIcon className='absolute right-2 top-0 bottom-0 m-auto' />
         </div>
-      </form>
+      </div>
       <div>
-        <Table collapse={collapse} musicList={musicList} />
+        <Table collapse={collapse} musicFiltered={musicFiltered} />
       </div>
     </aside>
   )

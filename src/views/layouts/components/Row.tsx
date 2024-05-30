@@ -1,4 +1,5 @@
 import { convertDate } from '@/services/converDates'
+import { useCurrentMusicInfo } from '@/store/currentMusicInfo'
 import { Music } from '@/types/musicList'
 
 type Props = {
@@ -7,11 +8,13 @@ type Props = {
 }
 
 export default function Row ({ song, collapse }: Props) {
+  const setCurrentMusic = useCurrentMusicInfo((state) => state.setCurrentMusic)
+
   return (
-    <tr className='hover:bg-[#222222] duration-200 cursor-pointer'>
+    <tr onClick={() => setCurrentMusic(song)} className='hover:bg-[#222222] duration-200 cursor-pointer'>
       <td>
-        <article className='flex p-2 gap-4 rounded-lg'>
-          <picture className='w-12 h-1w-12 overflow-hidden block rounded-md'>
+        <article className='flex p-2 gap-4 rounded-lg text-white'>
+          <picture className='w-12 h-12 overflow-hidden block rounded-md'>
             <img className='w-full h-full object-cover' src={song.song_cover.url} alt="" />
           </picture>
           <div>
@@ -24,12 +27,12 @@ export default function Row ({ song, collapse }: Props) {
         <>
           <td>
             <article className='text-center'>
-              <h5 className='font-light text-white text-base'>{convertDate(song.realease_date)}</h5>
+              <h5 className='font-light text-white/70 text-sm'>{convertDate(song.realease_date)}</h5>
             </article>
           </td>
           <td>
             <article className='text-center'>
-              <h5 className='font-light text-white text-base'>{song.user.username}</h5>
+              <h5 className='font-light text-white/70 text-sm'>@{song.user.username}</h5>
             </article>
           </td>
         </>

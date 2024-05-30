@@ -1,11 +1,12 @@
 import { API_URL } from '@/config'
-import { Data } from '@/types/musicList'
-import { useEffect, useState } from 'react'
+import { Data, Music, Response } from '@/types/musicList'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 export default function usePLayList () {
   const [musicList, setMusicList] = useState<Data>()
+  const [musicFiltered, setMusicFiltered] = useState<Music[]>()
   const { register, formState: { errors } } = useForm()
 
   useEffect(() => {
@@ -15,15 +16,25 @@ export default function usePLayList () {
         toast.error('Error al cargar las canciones')
         throw new Error('Error fetching music list')
       }
-      const result = await res.json()
+      const result = await res.json() as Response
       setMusicList(result.data)
+      setMusicFiltered(result.data.data)
     }
     getMusicList()
   }, [])
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const filteredMusicList = musicList?.data.filter(song => {
+      return song.name.toLowerCase().includes(e.target.value.toLowerCase())
+    })
+
+    setMusicFiltered(filteredMusicList)
+  }
+
   return {
-    musicList,
     register,
-    errors
+    errors,
+    handleInputChange,
+    musicFiltered
   }
 }

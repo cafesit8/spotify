@@ -1,7 +1,7 @@
 import { HouseIcon, SearchIcon } from '@/icons/icons'
 import { NavLink } from 'react-router-dom'
 
-export default function Search () {
+export default function SearchItem () {
   return (
     <div className='[grid-area:search] bg-[#141414] rounded-xl p-5 flex items-center'>
       <ul className='flex flex-col gap-4'>
