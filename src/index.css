@@ -5,3 +5,13 @@
 body {
   font-family: 'Outfit Variable', sans-serif;
 }
+
+@layer utilities {
+  .grid-cols-no-collapse {
+    grid-template-columns: minmax(300px, 400px) 1fr 1fr 1fr;
+  }
+
+  .grid-cols-collapse {
+    grid-template-columns: minmax(300px, 700px) 1fr 1fr 1fr;
+  }
+}

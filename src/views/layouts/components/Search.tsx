@@ -1,4 +1,4 @@
-import SearchIcon, { HouseIcon } from '@/icons/icons'
+import { HouseIcon, SearchIcon } from '@/icons/icons'
 import { NavLink } from 'react-router-dom'
 
 export default function Search () {

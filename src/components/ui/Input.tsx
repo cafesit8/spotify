@@ -8,7 +8,7 @@ export interface InputProps
   name: string,
   className?: string,
   errors: any,
-  label: string,
+  label?: string,
   register: any
 }
 

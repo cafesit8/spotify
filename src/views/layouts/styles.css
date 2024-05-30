@@ -1,6 +1,5 @@
 .app{
   display: grid;
-  grid-template-columns: minmax(300px, 400px) 1fr 1fr 1fr;
   grid-template-rows: repeat(7, 1fr);
   grid-template-areas:
     "search main main main"
