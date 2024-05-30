@@ -1,7 +1,7 @@
 export default function Dashboard () {
   return (
-    <section className='w-full h-full border'>
-      Este es el Dashboard
+    <section className='relative z-10 w-full h-full'>
+      Dashboard
     </section>
   )
 }

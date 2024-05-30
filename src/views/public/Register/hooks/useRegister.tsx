@@ -22,7 +22,7 @@ const schema = z.object({
   username: z.string().min(1, { message: 'Este campo es requerido' }).max(20, { message: 'Maximo 45 caracteres' }),
   url: z.string().min(1, { message: 'Debe subir una imagen' }),
   email: z.string().email({ message: 'Debe ser un email valido' }).max(100),
-  password: z.string().min(8, { message: 'Debe ser de 8 caracteres' }).max(8, { message: 'Debe ser de 8 caracteres' })
+  password: z.string().min(8, { message: 'Debe ser de 8 caracteres' })
 })
 
 type FormFields = z.infer<typeof schema>
@@ -63,7 +63,6 @@ export default function useRegister () {
         loading: 'Creando usuario...',
         success: (info) => {
           updateUserInfo(info)
-          localStorage.setItem('acces_token', info.access_token)
           navigate('/dashboard')
           return 'Usuario creado correctamente'
         },
