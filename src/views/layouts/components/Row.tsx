@@ -29,7 +29,7 @@ export default function Row ({ song, collapse }: Props) {
           </div>
           <div className='flex gap-3 items-center'>
             {currentMusic?.name === song.name ? <img className='w-6 h-8' src={soundWaves} alt="" /> : <></>}
-            <TooltipButton className='mt-1' name={<OptionsIcon className='w-5 h-5 text-white/70 group/edit invisible group-hover/item:visible' />} tooltiName='Opciones'>
+            <TooltipButton className='mt-1' name={<OptionsIcon className={`w-5 h-5 text-white/70 group/edit ${currentMusic?.name === song.name ? 'item:visible' : 'invisible group-hover/item:visible'}`} />} tooltiName='Opciones'>
               <button onClick={() => console.log(song)} className='hover:bg-[#303030] text-start p-2 text-sm rounded-sm'>Agregar a la fila</button>
             </TooltipButton>
           </div>
