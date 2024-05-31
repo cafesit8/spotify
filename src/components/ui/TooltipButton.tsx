@@ -24,7 +24,7 @@ export default function TooltipButton ({ name, tooltiName, children, className }
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      <PopoverContent className='bg-[#1b1b1b] flex flex-col gap-1 text-white w-[150px] mr-12 mt-2 border-none p-2'>
+      <PopoverContent className='bg-[#1b1b1b] flex flex-col gap-1 text-white w-[170px] mr-12 mt-2 border-none p-2'>
         {children}
       </PopoverContent>
     </Popover>
