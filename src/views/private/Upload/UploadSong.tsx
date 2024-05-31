@@ -1,127 +1,14 @@
 import { Input } from '@/components/ui/Input'
-import { useForm } from 'react-hook-form'
 import logo from '@/img/Spotify_Full_Logo_RGB_Green.png'
 import { DatePickerDemo } from '@/components/ui/InputDate'
-import { PauseIcon, PlayIcon, UploadImageIcon, UploadMusicIcon } from '@/icons/icons'
+import { UploadImageIcon, UploadMusicIcon } from '@/icons/icons'
 import { Button } from '@/components/ui/Button'
-import { uploadImage } from '@/services/api/uploadImage'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
-import WaveSurfer from 'wavesurfer.js'
 import useUploadSong from './hooks/useUploadSong.tsx'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useUserInfo } from '@/store/userInfo.ts'
-import { createSong } from '@/services/api/createSong.ts'
-import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
-
-function WaveSounds ({ audioUrl }: { audioUrl: string }) {
-  const [isPlaying, setIsPlaying] = useState(true)
-  const waveformRef = useRef<HTMLDivElement>(null)
-  const wavesurferRef = useRef<WaveSurfer>()
-
-  useEffect(() => {
-    if (!waveformRef.current) return
-
-    const wavesurfer = WaveSurfer.create({
-      container: waveformRef.current,
-      waveColor: 'white',
-      progressColor: '#16a34a'
-    })
-
-    wavesurferRef.current = wavesurfer
-    wavesurfer.load(audioUrl)
-    wavesurfer.play()
-    wavesurfer.setVolume(0.1)
-    return () => {
-      wavesurfer.destroy()
-    }
-  }, [audioUrl])
-
-  const togglePlayPause = () => {
-    if (wavesurferRef.current) {
-      if (isPlaying) {
-        wavesurferRef.current.pause()
-      } else {
-        wavesurferRef.current.play()
-      }
-      setIsPlaying(!isPlaying)
-    }
-  }
-
-  return (
-    <div className='w-full flex flex-col justify-center items-center'>
-      <div className='w-full block' ref={waveformRef} />
-      <button onClick={togglePlayPause} className='bg-white rounded-full p-1'>
-        {isPlaying ? <PauseIcon className='text-black p-1' /> : <PlayIcon className='text-black p-1' />}
-      </button>
-    </div>
-  )
-}
-
-const schema = z.object({
-  name: z.string().min(1, { message: 'Este campo es requerido' }),
-  artist: z.string().min(1, { message: 'Este campo es requerido' }),
-  album: z.string().min(1, { message: 'Este campo es requerido' }),
-  realease_date: z.string().min(1, { message: 'Debe seleccionar una fecha' }),
-  duration: z.number(),
-  url: z.string().min(1, { message: 'Debe subir una cancion' }),
-  cover: z.string().min(1, { message: 'Debe subir una imagen' })
-})
-
-type FormFields = z.infer<typeof schema>
+import { WaveSounds } from './components/WaveSound.tsx'
 
 export default function UploadSong () {
-  const [image, setImage] = useState()
-  const [song, setSong] = useState()
-  const { register, formState: { errors }, setValue, handleSubmit } = useForm<FormFields>({
-    resolver: zodResolver(schema)
-  })
-  const { loadingSong, setLoadingSong, loadingImage, setLoadingImage } = useUploadSong()
-  const userInfo = useUserInfo(state => state.user)
-  const navigate = useNavigate()
-  async function handleUploadImage (e: ChangeEvent<HTMLInputElement>) {
-    const file = e.currentTarget.files?.[0]
-    const formData = new FormData()
-    if (file) {
-      setLoadingImage(true)
-      formData.append('file', file)
-      formData.append('upload_preset', 'nofirma')
-      formData.append('folder', 'spotify/cover_image')
-      const response = await uploadImage(formData, 'image')
-      if (response.secure_url) {
-        setValue('cover', response.secure_url)
-        setImage(response.secure_url)
-      }
-    }
-  }
-  async function handleUploadMusic (e: ChangeEvent<HTMLInputElement>) {
-    const file = e.currentTarget.files?.[0]
-    const formData = new FormData()
-    if (file) {
-      setLoadingSong(true)
-      formData.append('file', file)
-      formData.append('upload_preset', 'nofirma')
-      formData.append('folder', 'spotify/music')
-      const response = await uploadImage(formData, 'auto')
-      if (response.secure_url) {
-        setValue('url', response.secure_url)
-        setSong(response.secure_url)
-        setValue('duration', response.duration)
-      }
-    }
-  }
+  const { loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register } = useUploadSong()
 
-  async function sendData (data: FormFields) {
-    toast.promise(createSong({ ...data, user_id: userInfo?.id }), {
-      loading: 'Cargando...',
-      success: () => {
-        navigate('/dashboard')
-        return 'Canción Creada'
-      },
-      error: 'Error al crear la cancion'
-    })
-  }
   return (
     <section className="flex flex-col gap-7 overflow-y-auto">
       <header>
@@ -137,9 +24,7 @@ export default function UploadSong () {
             <DatePickerDemo name='post_date' disabled text='La fecha se guarda automaticamente' label='Fecha de Publicación' />
             {song
               ? (
-                <div className='w-full h-full flex flex-col justify-center items-center'>
-                  <WaveSounds audioUrl={song} />
-                </div>
+                <WaveSounds audioUrl={song} />
               )
               : <label className={`cursor-pointer ${errors.url ? 'border-red-400' : ''} border-[1px] mt-1 flex justify-center items-center border-dashed rounded-md p-4 text-center`}>
                 <div className='flex flex-col items-center gap-1'>
