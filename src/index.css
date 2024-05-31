@@ -125,3 +125,7 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer; /* Cursor de puntero */
   margin-top: -5px; /* Alinea verticalmente el control deslizante */
 }
+
+.custom-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Invierte el color del icono */
+}

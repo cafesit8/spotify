@@ -11,7 +11,7 @@ export default function Register () {
     <main className="w-full min-h-screen bg-black grid place-content-center text-white">
       <form onSubmit={handleSubmit(sendData)} className="bg-[#242424] w-[400px] p-4 rounded-lg flex flex-col gap-4">
         <img className='w-[100px] m-auto' src={logo} alt="logo de spotify" title='logo de spotify' />
-        <h1 className='m-auto text-2xl font-semibold'>Register</h1>
+        <h1 className='m-auto text-2xl font-semibold'>Regístrate</h1>
         <Input name='name' label='Nombre' errors={errors} register={register} placeholder='Pepito' />
         <Input name='surname' label='Apellido' errors={errors} register={register} placeholder='Perez Perez' />
         <Input name='username' label='Usuario' errors={errors} register={register} placeholder='pepito88' />

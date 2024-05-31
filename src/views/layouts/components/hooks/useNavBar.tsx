@@ -14,6 +14,7 @@ export default function useNavBar () {
 
   return {
     userInfo,
-    handleLogOut
+    handleLogOut,
+    navigate
   }
 }

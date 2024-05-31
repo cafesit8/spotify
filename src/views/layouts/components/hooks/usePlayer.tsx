@@ -7,7 +7,7 @@ export default function usePlayer () {
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
-  const [volume, setVolume] = useState(0)
+  const [volume, setVolume] = useState(0.5)
   const audioRef = useRef<HTMLAudioElement>(null)
   const handlePlay = () => {
     if (audioRef.current != null) {
@@ -49,9 +49,7 @@ export default function usePlayer () {
     if (audioRef.current != null && info?.song_mp3.url != null) {
       audioRef.current.src = info.song_mp3.url
       audioRef.current.play()
-      audioRef.current.volume = 0.5
       setPlaying(true)
-      setVolume(0.5)
     }
   }, [info])
 

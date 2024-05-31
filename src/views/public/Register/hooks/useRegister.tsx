@@ -1,4 +1,4 @@
-import { uploadImage } from '@/services/uploadImage'
+import { uploadImage } from '@/services/api/uploadImage'
 import { ChangeEvent, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { z } from 'zod'
@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // import { createUser } from '@/services/createUser'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
-import { registerUser } from '@/services/registerUser'
+import { registerUser } from '@/services/api/registerUser'
 import { useUserInfo } from '@/store/userInfo'
 
 const STATUS = {

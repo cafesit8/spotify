@@ -1,4 +1,4 @@
-import { logIn } from '@/services/logIn'
+import { logIn } from '@/services/api/logIn'
 import { useUserInfo } from '@/store/userInfo'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
