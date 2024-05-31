@@ -53,7 +53,7 @@ export default function UploadSong () {
               : <label className={`cursor-pointer ${errors.cover ? 'border-red-400' : ''} border-[1px] mt-1 flex justify-center items-center border-dashed rounded-md p-4 text-center`}>
                 <div className='flex flex-col items-center gap-1'>
                   <UploadImageIcon />
-                  <p>{loadingImage ? 'Cargando...' : 'Sube la Portada de la Canción'}</p>
+                  <p>{loadingImage ? 'Cargando...' : 'Portada de la Canción'}</p>
                 </div>
                 <input onChange={handleUploadImage} type="file" accept='image/*' className='hidden' />
               </label>}

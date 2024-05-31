@@ -111,3 +111,41 @@ export function HeartIconFilled ({ className }: { className?: string }) {
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className={className}><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" /></svg>
   )
 }
+
+export function NextIcon ({ className }: { className?: string }) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+    >
+      <path
+        d="M7.41421 5L6 6.41421L11.6569 12.0711L6 17.7279L7.41421 19.1421L14.4853 12.0711L7.41421 5Z"
+        fill="currentColor"
+      />
+      <path d="M16.3432 19V5H18.3432V19H16.3432Z" fill="currentColor" />
+    </svg>
+  )
+}
+
+export function PreviousIcon ({ className }: { className?: string }) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      strokeWidth="5"
+      strokeLinecap="round" strokeLinejoin="round"
+      className={className}
+    >
+      <path
+        d="M16.929 5L18.3432 6.41421L12.6863 12.0711L18.3432 17.7279L16.929 19.1421L9.85789 12.0711L16.929 5Z"
+        fill="currentColor"
+      />
+      <path d="M8 19V5H6V19H8Z" fill="currentColor" />
+    </svg>
+  )
+}

@@ -1,4 +1,4 @@
-import { MutedIcon, PauseIcon, PlayIcon } from '@/icons/icons'
+import { MutedIcon, NextIcon, PauseIcon, PlayIcon, PreviousIcon } from '@/icons/icons'
 import { convertDate } from '@/services/converDates'
 import { formatTime } from '@/services/formaCurrentTime'
 import usePlayer from './hooks/usePlayer'
@@ -33,7 +33,17 @@ function Volume ({ handleMuted, handleVolume, muted, volume, volumeStep }: any) 
 function Controls ({ audioRef, currentTime, handlePlay, info, playing }: any) {
   return (
     <div className="flex-1 max-w-[480px] mx-auto text-center flex flex-col items-center gap-5 justify-center">
-      <button onClick={handlePlay} className='bg-white hover:scale-105 duration-150 rounded-full w-9 h-9 grid place-content-center'>{playing ? <PauseIcon className='text-black' /> : <PlayIcon className='text-black' />}</button>
+      <div className='flex gap-4'>
+        <button>
+          <PreviousIcon className='text-white/80 hover:text-white w-7 h-7' />
+        </button>
+        <button onClick={handlePlay} className='bg-white hover:scale-105 duration-150 rounded-full w-9 h-9 grid place-content-center'>
+          {playing ? <PauseIcon className='text-black' /> : <PlayIcon className='text-black' />}
+        </button>
+        <button>
+          <NextIcon className='text-white/80 hover:text-white w-7 h-7' />
+        </button>
+      </div>
       <div className='flex gap-2 items-center'>
         <span className='text-xs w-9'>{formatTime(currentTime)}</span>
         <input className='w-[450px]' type="range" value={currentTime} max={audioRef.current?.duration} onChange={(e) => {
@@ -49,11 +59,11 @@ function Controls ({ audioRef, currentTime, handlePlay, info, playing }: any) {
 }
 
 export default function Player () {
-  const { audioRef, info, handleMuted, handlePlay, handleVolume, currentTime, muted, playing, volume, volumeStep } = usePlayer()
+  const { audioRef, currentMusic, handleMuted, handlePlay, handleVolume, currentTime, muted, playing, volume, volumeStep } = usePlayer()
   return (
     <footer className='[grid-area:footer] footer bg-[#141414] rounded-xl flex justify-between p-3 gap-3'>
-      <Info info={info!} />
-      <Controls audioRef={audioRef} currentTime={currentTime} handlePlay={handlePlay} info={info} playing={playing} />
+      <Info info={currentMusic!} />
+      <Controls audioRef={audioRef} currentTime={currentTime} handlePlay={handlePlay} info={currentMusic} playing={playing} />
       <Volume handleMuted={handleMuted} handleVolume={handleVolume} muted={muted} volume={volume} volumeStep={volumeStep} />
     </footer>
   )
