@@ -1,10 +1,10 @@
 import '@fontsource-variable/outfit'
 import './styles.css'
-import PlayList from './components/PlayList'
+import PlayList from './components/PlayList/PlayList'
 import { useState } from 'react'
-import SearchItem from './components/Search'
-import Player from './components/Player'
-import Main from './components/Main'
+import SearchItem from './components/SearchSection/Search'
+import Player from './components/Player/Player'
+import Main from './components/Main/Main'
 
 export default function DashboardLayout () {
   const [collapse, setCollapse] = useState(false)

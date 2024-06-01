@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/Input'
 import { ArrowLeftIcon, ArrowRightIcon, BookIcon, SearchIcon } from '@/icons/icons'
-import Table from './Table'
-import usePLayList from './hooks/usePLayList'
+import Table from './components/Table'
+import usePLayList from '../hooks/usePLayList'
 
 type Props = {
   handleCollapse: () => void
