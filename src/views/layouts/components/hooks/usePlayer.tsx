@@ -9,7 +9,7 @@ export default function usePlayer () {
   const [muted, setMuted] = useState(false)
   const [repeatPlayList, setRepeatPlayList] = useState(true)
   const [currentTime, setCurrentTime] = useState(0)
-  const [volume, setVolume] = useState(0.5)
+  const [volume, setVolume] = useState(0.25)
   const audioRef = useRef<HTMLAudioElement>(null)
 
   const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
@@ -19,6 +19,18 @@ export default function usePlayer () {
     const savedIndex = localStorage.getItem('currentSongIndex')
     return savedIndex ? parseInt(savedIndex, 10) : 0
   })
+
+  function nextSong () {
+    const nextIndex = currentIndex === playList.length - 1 ? 0 : currentIndex + 1
+    setCurrentIndex(nextIndex)
+    setCurrentSong(playList[nextIndex])
+  }
+
+  function prevSong () {
+    const prevIndex = currentIndex === 0 ? playList.length - 1 : currentIndex - 1
+    setCurrentIndex(prevIndex)
+    setCurrentSong(playList[prevIndex])
+  }
 
   const handleRepeat = () => setRepeatPlayList(!repeatPlayList)
 
@@ -54,7 +66,6 @@ export default function usePlayer () {
     }
   }, [currentIndex, playList, repeatPlayList])
 
-  // Maintain song state on playlist update without restarting song
   useEffect(() => {
     const currentIndexInPlaylist = playList.findIndex(
       (song) => song.id === currentSong?.id
@@ -117,16 +128,16 @@ export default function usePlayer () {
 
   function handleVolume (e: any) {
     if (audioRef.current != null) {
-      audioRef.current.volume = e.target.value
-      setVolume(e.target.value)
+      audioRef.current.volume = e[0]
+      setVolume(e[0])
     }
   }
 
   function volumeStep () {
     if (audioRef.current != null) {
       if (volume == 0) return <MutedIcon className='w-5 h-5' />
-      if (volume > 0 && volume < 0.5) return <LowVolumenIcon className='w-5 h-5' />
-      if (volume >= 0.5) return <NormalVolumenIcon className='w-5 h-5' />
+      if (volume > 0 && volume < 0.25) return <LowVolumenIcon className='w-5 h-5' />
+      if (volume >= 0.25) return <NormalVolumenIcon className='w-5 h-5' />
     }
   }
 
@@ -142,6 +153,8 @@ export default function usePlayer () {
     volumeStep,
     currentSong,
     repeatPlayList,
-    handleRepeat
+    handleRepeat,
+    nextSong,
+    prevSong
   }
 }
