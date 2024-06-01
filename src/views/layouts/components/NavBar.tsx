@@ -10,9 +10,9 @@ export default function NavBar () {
       <div className='flex gap-3 relative'>
         <Button onClick={() => navigate('/dashboard/upload-song')} className='rounded-full px-5'>Subir Canción</Button>
         <TooltipButton className='border w-9 h-9 rounded-full overflow-hidden' tooltiName={userInfo?.username} name={<img className='w-full h-full object-cover' src={userInfo?.photo_profile.url} alt="" />}>
-          <button className='hover:bg-[#303030] text-start p-2 text-sm'>Cuenta</button>
-          <button className='hover:bg-[#303030] text-start p-2 text-sm'>Opciones</button>
-          <button onClick={handleLogOut} className='hover:bg-[#303030] text-start p-2 text-sm'>Salir</button>
+          <div className='hover:bg-[#303030] text-start p-2 text-sm'>Cuenta</div>
+          <div className='hover:bg-[#303030] text-start p-2 text-sm'>Opciones</div>
+          <div onClick={handleLogOut} className='hover:bg-[#303030] text-start p-2 text-sm'>Salir</div>
         </TooltipButton>
       </div>
     </nav>
