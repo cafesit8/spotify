@@ -40,6 +40,9 @@ export default function usePlayer () {
 
   useEffect(() => {
     setCurrentSong(playList[currentIndex])
+    if (audioRef.current != null) {
+      audioRef.current.volume = volume
+    }
   }, [playList, currentIndex])
 
   useEffect(() => {
