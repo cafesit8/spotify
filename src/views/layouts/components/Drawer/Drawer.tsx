@@ -1,25 +1,20 @@
 import { DrawerContent } from '@/components/ui/Drawer'
-import './drawer.css'
 import { useCurrentSong } from '@/store/currentSong'
-import { convertDate } from '@/services/converDates'
 import { ToolTip } from '@/components/ui/ToolTip'
 import { DownloadIcon, HeartIcon, PauseIcon, PlayIcon, RandomIcon } from '@/icons/icons'
+import { usePalette } from 'react-palette'
+import Header from './components/Header'
+import Table from './components/Table'
 
 export default function DrawerContainer ({ playing }: { playing: boolean }) {
   const currentSong = useCurrentSong(state => state.currentSong)
+  const { data } = usePalette(currentSong?.song_cover.url ?? '#8a8b8b')
+  const background = data.lightMuted ?? '#8a8b8b'
+
   return (
-    <DrawerContent className='drawer w-full h-screen rounded-none bg-[#141414] text-white border-none'>
-      <main className='w-[1300px] m-auto h-full p-3 flex flex-col gap-6'>
-        <header className='flex gap-6'>
-          <picture className='block w-[250px] h-[250px] overflow-hidden rounded-lg'>
-            <img className='w-full h-full object-cover' src={currentSong?.song_cover.url} alt="" />
-          </picture>
-          <div className='flex flex-col justify-end'>
-            <h3 className='text-7xl font-semibold'>{currentSong?.name.toLocaleUpperCase()}</h3>
-            <h4 className='text-3xl font-semibold'>{currentSong?.artist}</h4>
-            <h4 className='text-3xl text-white/70'>{currentSong?.realease_date && convertDate(currentSong?.realease_date)}</h4>
-          </div>
-        </header>
+    <DrawerContent style={{ background: `linear-gradient(180deg, ${background} 0%, #141414 37%)` }} className='w-full h-svh rounded-none text-white border-none'>
+      <main className='w-[1300px] m-auto h-full p-3 flex flex-col gap-6 overflow-y-auto'>
+        <Header currentSong={currentSong} />
         <section className='flex gap-6 items-center'>
           <ToolTip text={`${playing ? 'Pausar' : 'Reproducir'}`}>
             <button className='bg-green-500 p-4 rounded-full'>
@@ -42,6 +37,7 @@ export default function DrawerContainer ({ playing }: { playing: boolean }) {
             </button>
           </ToolTip>
         </section>
+        <Table />
       </main>
     </DrawerContent>
   )
