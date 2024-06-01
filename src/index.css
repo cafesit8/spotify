@@ -101,38 +101,6 @@ body {
   }
 }
 
-/* Estilos base para el input range */
-input[type=range] {
-  -webkit-appearance: none; /* Desactiva los estilos nativos del navegador */
-  /* width: 100%; Anchura completa del contenedor */
-  height: 5px; /* Altura del riel del rango */
-  background-color: #ddd; /* Color de fondo del riel */
-  border-radius: 5px; /* Borde redondeado */
-}
-
-/* Estilos para la barra de progreso */
-input[type=range]::-webkit-slider-runnable-track {
-  /* width: 100%; Anchura completa */
-  height: 5px; /* Altura del riel del rango */
-  background-color: #3a3939; /* Color de la barra de progreso */
-  border-radius: 5px; /* Borde redondeado */
-}
-
-input[type=range]::-webkit-slider-runnable-track[value] {
-  background-color: #fff; /* Cambia el color de fondo del lado derecho a blanco */
-}
-
-/* Estilos para el control deslizante */
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Desactiva los estilos nativos del navegador */
-  width: 15px; /* Anchura del control deslizante */
-  height: 15px; /* Altura del control deslizante */
-  background-color: #fff; /* Color del control deslizante */
-  border-radius: 50%; /* Borde redondeado */
-  cursor: pointer; /* Cursor de puntero */
-  margin-top: -5px; /* Alinea verticalmente el control deslizante */
-}
-
 .custom-date-input::-webkit-calendar-picker-indicator {
   filter: invert(1); /* Invierte el color del icono */
 }
