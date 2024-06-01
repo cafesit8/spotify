@@ -1,8 +1,9 @@
-import { MutedIcon, NextIcon, PauseIcon, PlayIcon, PreviousIcon } from '@/icons/icons'
+import { MutedIcon, NextIcon, PauseIcon, PlayIcon, PreviousIcon, RandomIcon, RepeatPlayListIcon, RepeatSongIcon } from '@/icons/icons'
 import { convertDate } from '@/services/converDates'
 import { formatTime } from '@/services/formaCurrentTime'
 import usePlayer from './hooks/usePlayer'
 import { Music } from '@/types/musicList'
+import { useCurrentMusicInfo } from '@/store/currentPlayList'
 
 function Info ({ info }: { info: Music }) {
   return (
@@ -30,10 +31,19 @@ function Volume ({ handleMuted, handleVolume, muted, volume, volumeStep }: any) 
   )
 }
 
-function Controls ({ audioRef, currentTime, handlePlay, info, playing }: any) {
+function Controls ({ audioRef, currentTime, handlePlay, info, playing, repeatPlayList, handleRepeat }: any) {
+  const handleRandomPlayList = useCurrentMusicInfo(state => state.shufflePlayList)
+  const handleRandom = () => handleRandomPlayList()
   return (
     <div className="flex-1 max-w-[480px] mx-auto text-center flex flex-col items-center gap-5 justify-center">
       <div className='flex gap-4'>
+        {repeatPlayList
+          ? <button onClick={handleRepeat}>
+            <RepeatPlayListIcon className='text-white w-7 h-7' />
+          </button>
+          : <button onClick={handleRepeat}>
+            <RepeatSongIcon className='text-white w-7 h-7' />
+          </button>}
         <button>
           <PreviousIcon className='text-white/80 hover:text-white w-7 h-7' />
         </button>
@@ -42,6 +52,9 @@ function Controls ({ audioRef, currentTime, handlePlay, info, playing }: any) {
         </button>
         <button>
           <NextIcon className='text-white/80 hover:text-white w-7 h-7' />
+        </button>
+        <button onClick={handleRandom}>
+          <RandomIcon className='duration-150 w-7 h-7' />
         </button>
       </div>
       <div className='flex gap-2 items-center'>
@@ -59,11 +72,11 @@ function Controls ({ audioRef, currentTime, handlePlay, info, playing }: any) {
 }
 
 export default function Player () {
-  const { audioRef, currentMusic, handleMuted, handlePlay, handleVolume, currentTime, muted, playing, volume, volumeStep } = usePlayer()
+  const { audioRef, currentSong, handleMuted, handlePlay, handleVolume, currentTime, muted, playing, volume, volumeStep, repeatPlayList, handleRepeat } = usePlayer()
   return (
     <footer className='[grid-area:footer] footer bg-[#141414] rounded-xl flex justify-between p-3 gap-3'>
-      <Info info={currentMusic!} />
-      <Controls audioRef={audioRef} currentTime={currentTime} handlePlay={handlePlay} info={currentMusic} playing={playing} />
+      <Info info={currentSong!} />
+      <Controls audioRef={audioRef} repeatPlayList={repeatPlayList} handleRepeat={handleRepeat} currentTime={currentTime} handlePlay={handlePlay} info={currentSong} playing={playing} />
       <Volume handleMuted={handleMuted} handleVolume={handleVolume} muted={muted} volume={volume} volumeStep={volumeStep} />
     </footer>
   )

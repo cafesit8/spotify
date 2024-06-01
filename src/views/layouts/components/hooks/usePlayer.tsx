@@ -1,29 +1,69 @@
 import { LowVolumenIcon, MutedIcon, NormalVolumenIcon } from '@/icons/icons'
-import { useCurrentMusicInfo } from '@/store/currentMusicInfo'
+import { useCurrentMusicInfo } from '@/store/currentPlayList'
 import { useEffect, useRef, useState } from 'react'
-import { usePersistedState } from './useStateLocalStorage'
+import { useCurrentSong } from '@/store/currentSong'
 
 export default function usePlayer () {
   const playList = useCurrentMusicInfo((state) => state.playList)
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(false)
+  const [repeatPlayList, setRepeatPlayList] = useState(true)
   const [currentTime, setCurrentTime] = useState(0)
   const [volume, setVolume] = useState(0.5)
   const audioRef = useRef<HTMLAudioElement>(null)
-  const [currentMusic, setCurrentMusic] = usePersistedState('currentMusic', null)
 
-  const currentIndex = playList.findIndex((item) => item.id === currentMusic?.id)
+  const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
+  const currentSong = useCurrentSong(state => state.currentSong)
+
+  const [currentIndex, setCurrentIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('currentSongIndex')
+    return savedIndex ? parseInt(savedIndex, 10) : 0
+  })
+
+  const handleRepeat = () => setRepeatPlayList(!repeatPlayList)
 
   useEffect(() => {
-    if (playList.length > 0) {
-      if (currentMusic) {
-        const actualIndex = playList.findIndex((item) => item.id === currentMusic?.id)
-        setCurrentMusic(playList[actualIndex])
+    localStorage.setItem('currentSongIndex', JSON.stringify(currentIndex))
+  }, [currentIndex])
+
+  useEffect(() => {
+    setCurrentSong(playList[currentIndex])
+  }, [playList, currentIndex])
+
+  useEffect(() => {
+    if (!audioRef.current || !currentSong?.song_mp3.url) return
+    const audioElement = audioRef.current
+    const handleEnded = async () => {
+      if (repeatPlayList) {
+        const nextIndex = currentIndex === playList.length - 1 ? 0 : currentIndex + 1
+        setCurrentIndex(nextIndex)
+        setCurrentSong(playList[nextIndex])
       } else {
-        setCurrentMusic(playList[0])
+        audioElement.play()
       }
     }
-  }, [playList, currentMusic, setCurrentMusic])
+
+    if (audioRef.current) {
+      audioRef.current.addEventListener('ended', handleEnded)
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.removeEventListener('ended', handleEnded)
+      }
+    }
+  }, [currentIndex, playList, repeatPlayList])
+
+  // Maintain song state on playlist update without restarting song
+  useEffect(() => {
+    const currentIndexInPlaylist = playList.findIndex(
+      (song) => song.id === currentSong?.id
+    )
+
+    if (currentIndexInPlaylist !== -1) {
+      setCurrentIndex(currentIndexInPlaylist)
+    }
+  }, [playList])
 
   const handlePlay = () => {
     if (audioRef.current != null) {
@@ -36,8 +76,9 @@ export default function usePlayer () {
       }
     }
   }
+
   useEffect(() => {
-    if (audioRef.current != null && currentMusic?.song_mp3.url != null) {
+    if (audioRef.current != null && currentSong?.song_mp3.url != null) {
       audioRef.current.addEventListener('timeupdate', handleTimeUpdate)
     }
 
@@ -46,7 +87,7 @@ export default function usePlayer () {
         audioRef.current.removeEventListener('timeupdate', handleTimeUpdate)
       }
     }
-  }, [currentMusic?.song_mp3.url])
+  }, [currentSong])
 
   function handleTimeUpdate () {
     if (audioRef.current != null) {
@@ -55,23 +96,12 @@ export default function usePlayer () {
   }
 
   useEffect(() => {
-    if (audioRef.current != null && currentMusic?.song_mp3.url != null) {
-      audioRef.current.addEventListener('ended', () => {
-        if (currentIndex === playList.length - 1) {
-          setCurrentMusic(playList[0])
-        }
-        setCurrentMusic(playList[currentIndex + 1])
-      })
-    }
-  }, [audioRef, currentMusic, playList, currentIndex])
-
-  useEffect(() => {
-    if (audioRef.current != null && currentMusic?.song_mp3.url != null) {
-      audioRef.current.src = currentMusic.song_mp3.url
+    if (audioRef.current != null && currentSong?.song_mp3.url != null) {
+      audioRef.current.src = currentSong.song_mp3.url
       audioRef.current.play()
       setPlaying(true)
     }
-  }, [currentMusic])
+  }, [currentSong])
 
   function handleMuted () {
     if (audioRef.current != null) {
@@ -110,6 +140,8 @@ export default function usePlayer () {
     handleMuted,
     handleVolume,
     volumeStep,
-    currentMusic
+    currentSong,
+    repeatPlayList,
+    handleRepeat
   }
 }

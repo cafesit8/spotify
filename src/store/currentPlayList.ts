@@ -6,6 +6,7 @@ type CurrentMusicInfo = {
   playList: [] | Music[]
   setCurrentMusic: (currentMusic: any) => void
   addSongToTheList: (song: Music) => void
+  shufflePlayList: () => void
 }
 
 export const useCurrentMusicInfo = create(persist<CurrentMusicInfo>(
@@ -22,7 +23,16 @@ export const useCurrentMusicInfo = create(persist<CurrentMusicInfo>(
         set((state) => ({ playList: [song, ...state.playList] }))
       }
     },
-    addSongToTheList: (song: Music) => set((state) => ({ playList: [...state.playList, song] }))
+    addSongToTheList: (song: Music) => set((state) => ({ playList: [...state.playList, song] })),
+    shufflePlayList: () => {
+      const playList = get().playList
+      const newArray = playList.slice()
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]]
+      }
+      set({ playList: newArray })
+    }
   }),
   {
     name: 'playList'

@@ -1,10 +1,11 @@
 import { convertDate } from '@/services/converDates'
-import { useCurrentMusicInfo } from '@/store/currentMusicInfo'
+import { useCurrentMusicInfo } from '@/store/currentPlayList'
 import { Music } from '@/types/musicList'
 import soundWaves from '@/img/sounds.gif'
 import { AddIcon, HeartIcon, OptionsIcon } from '@/icons/icons'
 import TooltipButton from '@/components/ui/TooltipButton'
 import { toast } from 'sonner'
+import { useCurrentSong } from '@/store/currentSong'
 
 type Props = {
   collapse?: boolean
@@ -14,10 +15,11 @@ type Props = {
 export default function Row ({ song, collapse }: Props) {
   const setCurrentMusic = useCurrentMusicInfo((state) => state.setCurrentMusic)
   const addSongToPlayList = useCurrentMusicInfo((state) => state.addSongToTheList)
+  const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
   const playList = useCurrentMusicInfo((state) => state.playList)
-  const currentSong = playList && playList[0]
+  const currentSong = useCurrentSong(state => state.currentSong)
   const validate = playList.some((item) => item.id === song.id)
-  console.log(playList)
+
   function handlePlayList () {
     if (validate) {
       toast.info('Esta cancion ya se encuentra en la fila')
@@ -27,11 +29,15 @@ export default function Row ({ song, collapse }: Props) {
     }
   }
 
+  function handleClick () {
+    setCurrentSong(song)
+    setCurrentMusic(song)
+  }
   return (
     <tr className='hover:bg-[#222222] duration-200 cursor-pointer'>
       <td className={`${collapse ? 'rounded-tr-none rounded-br-none' : 'rounded-tr-lg rounded-br-lg'} rounded-tl-lg rounded-bl-lg`}>
         <article className='flex items-center justify-between p-2 gap-2 rounded-lg text-white group/item'>
-          <div onClick={() => setCurrentMusic(song)} className='flex gap-2 flex-1'>
+          <div onClick={handleClick} className='flex gap-2 flex-1'>
             <picture className='w-12 h-12 overflow-hidden block rounded-md'>
               <img className='w-full h-full object-cover' src={song.song_cover.url} alt="" />
             </picture>
