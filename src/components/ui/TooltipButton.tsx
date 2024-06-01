@@ -12,7 +12,7 @@ type Props = {
 export default function TooltipButton ({ name, tooltiName, children, className }: Props) {
   return (
     <Popover>
-      <TooltipProvider>
+      <TooltipProvider delayDuration={150}>
         <Tooltip>
           <TooltipTrigger>
             <PopoverTrigger className={`hover:scale-105 duration-150 ${className}`}>
