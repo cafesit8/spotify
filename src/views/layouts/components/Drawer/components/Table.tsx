@@ -35,7 +35,7 @@ export default function Table () {
       <tbody>
         <tr className='h-3'></tr>
         {playList.map((song, i) => (
-          <tr onClick={() => handleClick(song)} className='hover:bg-[#222222] cursor-pointer duration-200 group/item'>
+          <tr key={song.id} onClick={() => handleClick(song)} className='hover:bg-[#222222] cursor-pointer duration-200 group/item'>
             <td className='text-center rounded-tl-md rounded-bl-md'>
               <div className='flex justify-center relative'>
                 <span className='text-white/80 font-light'>
@@ -52,7 +52,7 @@ export default function Table () {
                 </span>
               </div>
             </td>
-            <td className=''>
+            <td>
               <div className='p-2 pl-0'>
                 <h5 className={`${currentSong?.id === song.id ? 'text-green-400' : 'text-white'} font-light text-base truncate`}>{song.name}</h5>
                 <h6 className='font-extralight text-white/70 text-sm'>{song.artist}</h6>
