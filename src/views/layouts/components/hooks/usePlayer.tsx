@@ -5,15 +5,13 @@ import { useCurrentSong } from '@/store/currentSong'
 
 export default function usePlayer () {
   const playList = useCurrentMusicInfo((state) => state.playList)
-  const [playing, setPlaying] = useState(false)
-  const [muted, setMuted] = useState(false)
   const [repeatPlayList, setRepeatPlayList] = useState(true)
   const [currentTime, setCurrentTime] = useState(0)
-  const [volume, setVolume] = useState(0.25)
+  const [volume, setVolume] = useState(0.05)
   const audioRef = useRef<HTMLAudioElement>(null)
-
   const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
   const currentSong = useCurrentSong(state => state.currentSong)
+  const { playing, setPlaying } = useCurrentSong()
 
   const [currentIndex, setCurrentIndex] = useState(() => {
     const savedIndex = localStorage.getItem('currentSongIndex')
@@ -35,19 +33,17 @@ export default function usePlayer () {
   const handleRepeat = () => setRepeatPlayList(!repeatPlayList)
 
   useEffect(() => {
-    localStorage.setItem('currentSongIndex', JSON.stringify(currentIndex))
-  }, [currentIndex])
-
-  useEffect(() => {
-    setCurrentSong(playList[currentIndex])
-    if (audioRef.current != null) {
-      audioRef.current.volume = volume
+    if (audioRef.current != null && currentSong?.song_mp3.url != null) {
+      audioRef.current.src = currentSong.song_mp3.url
+      audioRef.current.play()
     }
-  }, [playList, currentIndex])
+  }, [currentSong])
 
   useEffect(() => {
     if (!audioRef.current || !currentSong?.song_mp3.url) return
     const audioElement = audioRef.current
+    localStorage.setItem('currentSongIndex', JSON.stringify(currentIndex))
+
     const handleEnded = async () => {
       if (repeatPlayList) {
         const nextIndex = currentIndex === playList.length - 1 ? 0 : currentIndex + 1
@@ -67,32 +63,21 @@ export default function usePlayer () {
         audioRef.current.removeEventListener('ended', handleEnded)
       }
     }
-  }, [currentIndex, playList, repeatPlayList])
+  }, [currentIndex, playList, repeatPlayList, currentSong, setCurrentSong])
 
   useEffect(() => {
-    const currentIndexInPlaylist = playList.findIndex(
-      (song) => song.id === currentSong?.id
-    )
-
-    if (currentIndexInPlaylist !== -1) {
-      setCurrentIndex(currentIndexInPlaylist)
-    }
-  }, [playList])
-
-  const handlePlay = () => {
     if (audioRef.current != null) {
-      if (audioRef.current.paused) {
-        audioRef.current.play()
-        setPlaying(true)
-      } else {
+      if (!playing) {
         audioRef.current.pause()
-        setPlaying(false)
+      } else {
+        audioRef.current.play()
       }
     }
-  }
+  }, [playing, setPlaying])
 
   useEffect(() => {
     if (audioRef.current != null && currentSong?.song_mp3.url != null) {
+      audioRef.current.volume = volume
       audioRef.current.addEventListener('timeupdate', handleTimeUpdate)
     }
 
@@ -101,7 +86,7 @@ export default function usePlayer () {
         audioRef.current.removeEventListener('timeupdate', handleTimeUpdate)
       }
     }
-  }, [currentSong])
+  }, [currentSong, volume])
 
   function handleTimeUpdate () {
     if (audioRef.current != null) {
@@ -109,22 +94,12 @@ export default function usePlayer () {
     }
   }
 
-  useEffect(() => {
-    if (audioRef.current != null && currentSong?.song_mp3.url != null) {
-      audioRef.current.src = currentSong.song_mp3.url
-      audioRef.current.play()
-      setPlaying(true)
-    }
-  }, [currentSong])
-
   function handleMuted () {
     if (audioRef.current != null) {
       if (audioRef.current.muted) {
         audioRef.current.muted = false
-        setMuted(false)
       } else {
         audioRef.current.muted = true
-        setMuted(true)
       }
     }
   }
@@ -146,11 +121,9 @@ export default function usePlayer () {
 
   return {
     playing,
-    muted,
     currentTime,
     volume,
     audioRef,
-    handlePlay,
     handleMuted,
     handleVolume,
     volumeStep,
