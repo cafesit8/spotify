@@ -23,7 +23,7 @@ type FormFields = z.infer<typeof schema>
 export default function useUploadSong () {
   const [image, setImage] = useState()
   const [song, setSong] = useState()
-  const { register, formState: { errors }, setValue, handleSubmit } = useForm<FormFields>({
+  const { register, formState: { errors, isSubmitting }, setValue, handleSubmit } = useForm<FormFields>({
     resolver: zodResolver(schema)
   })
   const [loadingSong, setLoadingSong] = useState(false)
@@ -38,7 +38,7 @@ export default function useUploadSong () {
       setLoadingImage(true)
       formData.append('file', file)
       formData.append('upload_preset', 'nofirma')
-      formData.append('folder', 'spotify/cover_image')
+      formData.append('folder', `spotify/${userInfo?.name}/cover_image`)
       const response = await uploadImage(formData, 'image')
       if (response.secure_url) {
         setValue('cover', response.secure_url)
@@ -53,7 +53,7 @@ export default function useUploadSong () {
       setLoadingSong(true)
       formData.append('file', file)
       formData.append('upload_preset', 'nofirma')
-      formData.append('folder', 'spotify/music')
+      formData.append('folder', `spotify/${userInfo?.name}/music`)
       const response = await uploadImage(formData, 'auto')
       if (response.secure_url) {
         setValue('url', response.secure_url)
@@ -75,18 +75,6 @@ export default function useUploadSong () {
   }
 
   return {
-    loadingSong,
-    setLoadingSong,
-    setLoadingImage,
-    loadingImage,
-    handleUploadImage,
-    handleUploadMusic,
-    sendData,
-    register,
-    errors,
-    setValue,
-    handleSubmit,
-    image,
-    song
+    loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register, isSubmitting
   }
 }

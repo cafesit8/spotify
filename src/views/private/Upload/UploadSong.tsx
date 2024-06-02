@@ -7,7 +7,7 @@ import useUploadSong from './hooks/useUploadSong.tsx'
 import { WaveSounds } from './components/WaveSound.tsx'
 
 export default function UploadSong () {
-  const { loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register } = useUploadSong()
+  const { loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register, isSubmitting } = useUploadSong()
 
   return (
     <section className="flex flex-col gap-7 overflow-y-auto">
@@ -59,7 +59,7 @@ export default function UploadSong () {
               </label>}
           </div>
         </div>
-        <Button>Publicar</Button>
+        <Button disabled={isSubmitting}>Publicar</Button>
       </form>
     </section>
   )
