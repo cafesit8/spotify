@@ -49,11 +49,11 @@ export default function Row ({ song, collapse }: Props) {
           <div className='flex gap-3 items-center'>
             {currentSong?.name === song.name ? <img className='w-6 h-8' src={soundWaves} alt="" /> : <></>}
             <TooltipButton className='mt-1' name={<OptionsIcon className={`w-5 h-5 text-white/70 group/edit ${currentSong?.name === song.name ? 'item:visible' : 'invisible group-hover/item:visible'}`} />} tooltiName='Opciones'>
-              <div className='hover:bg-[#303030] text-start p-2 text-sm rounded-sm flex items-center gap-1 font-normal'>
+              <div className='hover:bg-[#303030] text-start p-2 text-sm hover:cursor-pointer rounded-sm flex items-center gap-1 font-normal'>
                 <HeartIcon className='w-5 h-5' />
                 <span>Me Gusta</span>
               </div>
-              <div onClick={handlePlayList} className='hover:bg-[#303030] text-start p-2 text-sm rounded-sm flex items-center gap-1 font-normal'>
+              <div onClick={handlePlayList} className='hover:bg-[#303030] hover:cursor-pointer text-start p-2 text-sm rounded-sm flex items-center gap-1 font-normal'>
                 <AddIcon className='w-5 h-5' />
                 <span>Agregar a la fila</span>
               </div>
