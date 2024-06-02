@@ -3,12 +3,12 @@ import { ToolTip } from '@/components/ui/ToolTip'
 import { NextIcon, PauseIcon, PlayIcon, PreviousIcon, RandomIcon, RepeatPlayListIcon, RepeatSongIcon } from '@/icons/icons'
 import { formatTime } from '@/services/formaCurrentTime'
 import { useCurrentMusicInfo } from '@/store/currentPlayList'
+import { useCurrentSong } from '@/store/currentSong'
 import { Music } from '@/types/musicList'
 
 type Props = {
   audioRef: any
   currentTime: number
-  handlePlay: () => void
   info: Music | null
   playing: boolean
   repeatPlayList: boolean
@@ -17,12 +17,23 @@ type Props = {
   prevSong: () => void
 }
 
-export function Controls ({ audioRef, currentTime, handlePlay, info, playing, repeatPlayList, handleRepeat, nextSong, prevSong }: Props) {
+export function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nextSong, prevSong, audioRef }: Props) {
   const handleRandomPlayList = useCurrentMusicInfo(state => state.shufflePlayList)
   const handleRandom = () => handleRandomPlayList()
+  const { playing, setPlaying } = useCurrentSong()
   function handleChange (e: number[]) {
     if (audioRef.current) {
       audioRef.current.currentTime = parseFloat(e[0].toString())
+    }
+  }
+
+  function handlePlay () {
+    if (audioRef.current) {
+      if (!playing) {
+        setPlaying(true)
+      } else {
+        setPlaying(false)
+      }
     }
   }
   return (
