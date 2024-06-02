@@ -8,7 +8,7 @@ export default function useNavBar () {
   async function handleLogOut () {
     localStorage.removeItem('userInfo')
     localStorage.removeItem('currentMusicInfo')
-    toast.success('Sesión cerrada correctamente')
+    toast.success('Adiós, Vuelve Pronto...')
     navigate('/login')
   }
 

@@ -23,7 +23,7 @@ export default function useLogin () {
       success: (info) => {
         setUserInfo(info)
         navigate('/dashboard')
-        return 'Sesión Iniciada'
+        return `Hola, ${info.data.username}`
       },
       error: 'Error al iniciar sesión'
     })
