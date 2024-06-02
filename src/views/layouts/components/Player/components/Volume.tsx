@@ -6,15 +6,14 @@ import { Slider } from '@/components/ui/Slider'
 import { ReactNode } from 'react'
 
 type Props = {
-  playing: boolean
   handleMuted: () => void
   handleVolume: (e: number[]) => void
-  muted: boolean
   volume: number
   volumeStep: () => ReactNode
+  audioRef: any
 }
 
-export function Volume ({ handleMuted, handleVolume, muted, volume, volumeStep, playing }: Props) {
+export function Volume ({ handleMuted, handleVolume, volume, volumeStep, audioRef }: Props) {
   return (
     <div className="w-[270px] flex items-center gap-4 justify-center">
       <Drawer>
@@ -23,9 +22,9 @@ export function Volume ({ handleMuted, handleVolume, muted, volume, volumeStep, 
             <ListIcon className='w-6 h-6 mt-[5px]' />
           </ToolTip>
         </DrawerTrigger>
-        <DrawerContainer playing={playing} />
+        <DrawerContainer />
       </Drawer>
-      <button onClick={handleMuted}>{muted ? <MutedIcon className='w-5 h-5' /> : volumeStep()}</button>
+      <button onClick={handleMuted}>{audioRef.current?.muted ? <MutedIcon className='w-5 h-5' /> : volumeStep()}</button>
       <Slider onValueChange={handleVolume} value={[volume]} defaultValue={[0.25]} min={0} max={0.5} step={0.01} />
     </div>
   )
