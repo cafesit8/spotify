@@ -8,6 +8,7 @@ const DashboardLayout = lazy(() => import('@/views/layouts/DashboardLayout'))
 const Dashboard = lazy(() => import('@/views/private/Dashboard/Dashboard'))
 const Search = lazy(() => import('@/views/private/Search/Search'))
 const UploadSong = lazy(() => import('@/views/private/Upload/UploadSong'))
+const MyAccount = lazy(() => import('@/views/private/MyCount/MyAccount'))
 
 export const routes = createBrowserRouter([
   {
@@ -28,17 +29,22 @@ export const routes = createBrowserRouter([
       { element: <Navigate to="/dashboard" />, index: true },
       {
         path: '/dashboard',
-        element: <Suspense fallback={<Loading />}><Dashboard /></Suspense>,
+        element: <Suspense fallback={<Loading transparent />}><Dashboard /></Suspense>,
         errorElement: <Error />
       },
       {
-        path: '/dashboard/search',
-        element: <Suspense fallback={<Loading />}><Search /></Suspense>,
+        path: '/search',
+        element: <Suspense fallback={<Loading transparent />}><Search /></Suspense>,
         errorElement: <Error />
       },
       {
-        path: '/dashboard/upload-song',
-        element: <Suspense fallback={<Loading />}><UploadSong /></Suspense>,
+        path: '/upload-song',
+        element: <Suspense fallback={<Loading transparent />}><UploadSong /></Suspense>,
+        errorElement: <Error />
+      },
+      {
+        path: '/my-account',
+        element: <Suspense fallback={<Loading transparent />}><MyAccount /></Suspense>,
         errorElement: <Error />
       }
     ]
