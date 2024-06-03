@@ -17,7 +17,7 @@ export default function PlayList ({ handleCollapse, collapse }: Props) {
       <div className='flex justify-between text-white/70'>
         <h3 className='flex gap-4 font-semibold'><BookIcon /> Música recién compartida</h3>
         <ToolTip text={`${collapse ? 'Mostrar menos' : 'Mostrar más'}`}>
-          <button className='lg:block hidden' onClick={handleCollapse}>{collapse ? <ArrowLeftIcon /> : <ArrowRightIcon />}</button>
+          <button aria-label='open' className='lg:block hidden' onClick={handleCollapse}>{collapse ? <ArrowLeftIcon /> : <ArrowRightIcon />}</button>
         </ToolTip>
       </div>
       <div>
