@@ -3,7 +3,7 @@ import { Music } from '@/types/musicList'
 
 export function Info ({ info }: { info: Music }) {
   return (
-    <div className="w-[270px]">
+    <div className="flex flex-grow-0">
       <article className='flex items-center gap-4 rounded-lg'>
         <picture className='w-28 h-28 overflow-hidden block rounded-md'>
           <img className='w-full h-full object-cover' src={info?.song_cover.url} alt="" />
