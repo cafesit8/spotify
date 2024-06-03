@@ -1,5 +1,6 @@
 export function formatTime (currentTime: number) {
-  if (Number.isNaN(currentTime)) return '00:00'
+  if (Number.isNaN(currentTime)) return '0:00'
+  if (currentTime == null) return '0:00'
   const minutes = Math.floor(currentTime / 60)
   const seconds = Math.floor(currentTime % 60)
   const formattedMinutes = String(minutes).padStart(1, '0')
