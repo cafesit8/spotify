@@ -37,7 +37,7 @@ export function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nex
     }
   }
   return (
-    <div className="flex-1 max-w-[480px] mx-auto text-center flex flex-col items-center gap-5 justify-center">
+    <div className="flex-1 mx-auto text-center flex flex-col items-center gap-5 justify-center">
       <div className='flex gap-4'>
         {repeatPlayList
           ? (<ToolTip text='Repetir la lista'>
@@ -72,7 +72,7 @@ export function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nex
       </div>
       <div className='flex gap-2 items-center'>
         <span className='text-xs w-9'>{formatTime(currentTime)}</span>
-        <Slider className='w-[480px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
+        <Slider className='w-[450px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
         <span className='text-xs w-9'>{audioRef.current && formatTime(audioRef.current?.duration)}</span>
       </div>
       <audio ref={audioRef} src={info?.song_mp3.url}></audio>
