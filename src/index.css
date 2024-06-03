@@ -19,7 +19,7 @@ body {
   }
 
   .grid-cols-collapse {
-    grid-template-columns: minmax(300px, 700px) 1fr 1fr 1fr;
+    grid-template-columns: minmax(300px, 650px) 1fr 1fr 1fr;
   }
 }
 
