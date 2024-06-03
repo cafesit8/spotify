@@ -1,6 +1,8 @@
+import { CLOUDINARY_URL } from '@/config'
+
 export async function uploadImage (formData: FormData, type: string = 'image') {
   try {
-    const res = await fetch(`https://api.cloudinary.com/v1_1/deeezka8t/${type}/upload`, {
+    const res = await fetch(`${CLOUDINARY_URL}/${type}/upload`, {
       method: 'POST',
       body: formData
     })
