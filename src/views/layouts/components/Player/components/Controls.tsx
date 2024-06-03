@@ -67,7 +67,7 @@ export function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nex
       </div>
       <div className='flex gap-2 items-center'>
         <span className='text-xs w-9'>{formatTime(currentTime)}</span>
-        <Slider className='w-[450px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
+        <Slider disabled={audioRef.current} className='w-[450px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
         <span className='text-xs w-9'>{formatTime(audioRef.current?.duration)}</span>
       </div>
       <audio ref={audioRef} src={info?.song_mp3.url}></audio>
