@@ -3,7 +3,6 @@ import { ChangeEvent, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-// import { createUser } from '@/services/createUser'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { registerUser } from '@/services/api/registerUser'
@@ -46,7 +45,7 @@ export default function useRegister () {
       formData.append('upload_preset', 'nofirma')
       formData.append('folder', 'spotify/users')
       const response = await uploadImage(formData)
-
+      console.log(response)
       if (response.secure_url) {
         setPhoto(response.secure_url)
         setValue('url', response.secure_url)
