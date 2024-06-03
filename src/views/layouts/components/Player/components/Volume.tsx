@@ -15,7 +15,7 @@ type Props = {
 
 export function Volume ({ handleMuted, handleVolume, volume, volumeStep, audioRef }: Props) {
   return (
-    <div className="w-[270px] flex items-center gap-4 justify-center">
+    <div className="flex items-center gap-4 justify-end">
       <Drawer>
         <DrawerTrigger>
           <ToolTip text='Fila de canciones'>
@@ -25,7 +25,7 @@ export function Volume ({ handleMuted, handleVolume, volume, volumeStep, audioRe
         <DrawerContainer />
       </Drawer>
       <button onClick={handleMuted}>{audioRef.current?.muted ? <MutedIcon className='w-5 h-5' /> : volumeStep()}</button>
-      <Slider onValueChange={handleVolume} value={[volume]} defaultValue={[0.25]} min={0} max={0.5} step={0.01} />
+      <Slider className='w-[150px]' onValueChange={handleVolume} value={[volume]} defaultValue={[0.25]} min={0} max={0.5} step={0.01} />
     </div>
   )
 }
