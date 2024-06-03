@@ -27,7 +27,7 @@ TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
 
-export function ToolTip ({ children, text }: any) {
+export function ToolTip ({ children, text }: { children: React.ReactNode, text: string }) {
   return (
     <TooltipProvider delayDuration={150}>
       <Tooltip>
