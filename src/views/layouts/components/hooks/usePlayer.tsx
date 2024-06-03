@@ -7,7 +7,7 @@ export default function usePlayer () {
   const playList = useCurrentMusicInfo((state) => state.playList)
   const [repeatPlayList, setRepeatPlayList] = useState(true)
   const [currentTime, setCurrentTime] = useState(0)
-  const [volume, setVolume] = useState(0.05)
+  const [volume, setVolume] = useState(0)
   const audioRef = useRef<HTMLAudioElement>(null)
   const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
   const currentSong = useCurrentSong(state => state.currentSong)
