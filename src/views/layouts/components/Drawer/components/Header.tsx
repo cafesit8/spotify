@@ -1,7 +1,8 @@
 import { convertDate } from '@/services/converDates'
-import { Music } from '@/types/musicList'
+import { useCurrentSong } from '@/store/currentSong'
 
-export default function Header ({ currentSong }: { currentSong: Music | null }) {
+export default function Header () {
+  const currentSong = useCurrentSong(state => state.currentSong)
   return (
     <header className='flex gap-6'>
       <picture className='block w-[250px] h-[250px] overflow-hidden rounded-lg'>
