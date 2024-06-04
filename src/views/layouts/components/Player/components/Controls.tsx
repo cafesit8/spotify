@@ -16,7 +16,7 @@ type Props = {
   prevSong: () => void
 }
 
-export function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nextSong, prevSong, audioRef }: Props) {
+export default function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nextSong, prevSong, audioRef }: Props) {
   const { playing, setPlaying } = useCurrentSong()
   function handleChange (e: number[]) {
     if (audioRef.current) {
