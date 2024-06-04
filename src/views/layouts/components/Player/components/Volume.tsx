@@ -1,9 +1,10 @@
 import { Drawer, DrawerTrigger } from '@/components/ui/Drawer'
 import { ToolTip } from '@/components/ui/ToolTip'
 import { ListIcon, MutedIcon, NormalVolumenIcon } from '@/icons/icons'
-import DrawerContainer from '../../Drawer/Drawer'
 import { Slider } from '@/components/ui/Slider'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, Suspense, lazy } from 'react'
+import Loading from '@/views/public/Loading'
+const DrawerContainer = lazy(() => import('../../Drawer/Drawer'))
 
 type Props = {
   handleMuted: () => void
@@ -29,7 +30,9 @@ export default function Volume ({ handleMuted, handleVolume, volume, volumeStep,
             <ListIcon className='w-6 h-6 mt-[5px]' />
           </ToolTip>
         </DrawerTrigger>
-        <DrawerContainer />
+        <Suspense fallback={<Loading />}>
+          <DrawerContainer />
+        </Suspense>
       </Drawer>
       <button onClick={handleMuted}>
         {renderIcon()}
