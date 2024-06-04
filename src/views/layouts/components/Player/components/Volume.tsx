@@ -13,7 +13,7 @@ type Props = {
   audioRef: React.RefObject<HTMLAudioElement> | null
 }
 
-export function Volume ({ handleMuted, handleVolume, volume, volumeStep, audioRef }: Props) {
+export default function Volume ({ handleMuted, handleVolume, volume, volumeStep, audioRef }: Props) {
   function renderIcon () {
     if (audioRef?.current == null) {
       return <NormalVolumenIcon className='w-6 h-6' />

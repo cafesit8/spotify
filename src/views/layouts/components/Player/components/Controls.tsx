@@ -3,21 +3,19 @@ import { ToolTip } from '@/components/ui/ToolTip'
 import { NextIcon, PauseIcon, PlayIcon, PreviousIcon, RandomIcon, RepeatPlayListIcon, RepeatSongIcon } from '@/icons/icons'
 import { formatTime } from '@/services/formaCurrentTime'
 import { useCurrentSong } from '@/store/currentSong'
-import { Music } from '@/types/musicList'
 
 type Props = {
   audioRef: any
   currentTime: number
-  info: Music | null
-  playing: boolean
   repeatPlayList: boolean
   handleRepeat: () => void
   nextSong: () => void
   prevSong: () => void
 }
 
-export default function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nextSong, prevSong, audioRef }: Props) {
-  const { playing, setPlaying } = useCurrentSong()
+export default function Controls ({ currentTime, repeatPlayList, handleRepeat, nextSong, prevSong, audioRef }: Props) {
+  const { playing, setPlaying, currentSong } = useCurrentSong(state => state)
+
   function handleChange (e: number[]) {
     if (audioRef.current) {
       audioRef.current.currentTime = parseFloat(e[0].toString())
@@ -70,7 +68,7 @@ export default function Controls ({ currentTime, info, repeatPlayList, handleRep
         <Slider className='w-[450px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
         <span className='text-xs w-9'>{formatTime(audioRef.current?.duration)}</span>
       </div>
-      <audio ref={audioRef} src={info?.song_mp3.url}></audio>
+      <audio ref={audioRef} src={currentSong?.song_mp3.url}></audio>
     </div >
   )
 }
