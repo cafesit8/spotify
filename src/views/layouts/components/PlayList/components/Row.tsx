@@ -15,7 +15,7 @@ type Props = {
 export default function Row ({ song, collapse }: Props) {
   const setCurrentMusic = useCurrentMusicInfo((state) => state.setCurrentMusic)
   const addSongToPlayList = useCurrentMusicInfo((state) => state.addSongToTheList)
-  const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
+  const { setCurrentSong, setPlaying } = useCurrentSong(state => state)
   const playList = useCurrentMusicInfo((state) => state.playList)
   const currentSong = useCurrentSong(state => state.currentSong)
   const validate = playList.some((item) => item.id === song.id)
@@ -32,6 +32,7 @@ export default function Row ({ song, collapse }: Props) {
   function handleClick () {
     setCurrentSong(song)
     setCurrentMusic(song)
+    setPlaying(true)
   }
   return (
     <tr className='hover:bg-[#222222] duration-200 cursor-pointer'>
