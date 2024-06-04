@@ -120,14 +120,12 @@ export default function usePlayer () {
   }
 
   return {
-    playing,
     currentTime,
     volume,
     audioRef,
     handleMuted,
     handleVolume,
     volumeStep,
-    currentSong,
     repeatPlayList,
     handleRepeat,
     nextSong,
