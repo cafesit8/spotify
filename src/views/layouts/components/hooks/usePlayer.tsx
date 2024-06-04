@@ -113,9 +113,9 @@ export default function usePlayer () {
 
   function volumeStep () {
     if (audioRef.current != null) {
-      if (volume == 0) return <MutedIcon className='w-5 h-5' />
-      if (volume > 0 && volume < 0.25) return <LowVolumenIcon className='w-5 h-5' />
-      if (volume >= 0.25) return <NormalVolumenIcon className='w-5 h-5' />
+      if (volume == 0) return <MutedIcon className='w-6 h-6' />
+      if (volume > 0 && volume < 0.25) return <LowVolumenIcon className='w-6 h-6' />
+      if (volume >= 0.25) return <NormalVolumenIcon className='w-6 h-6' />
     }
   }
 

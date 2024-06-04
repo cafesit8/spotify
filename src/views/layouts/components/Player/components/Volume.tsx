@@ -16,9 +16,9 @@ type Props = {
 export function Volume ({ handleMuted, handleVolume, volume, volumeStep, audioRef }: Props) {
   function renderIcon () {
     if (audioRef?.current == null) {
-      return <NormalVolumenIcon className='w-5 h-5' />
+      return <NormalVolumenIcon className='w-6 h-6' />
     } else {
-      return audioRef.current?.muted ? <MutedIcon className='w-5 h-5' /> : volumeStep()
+      return audioRef.current?.muted ? <MutedIcon className='w-6 h-6' /> : volumeStep()
     }
   }
   return (

@@ -54,7 +54,7 @@ export function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nex
           </button>
         </ToolTip>
         <button onClick={handlePlay} className='bg-white hover:scale-105 duration-150 rounded-full w-9 h-9 grid place-content-center'>
-          {!playing ? <PlayIcon className='text-black' /> : <PauseIcon className='text-black' />}
+          {playing ? <PauseIcon className='text-black' /> : <PlayIcon className='text-black' />}
         </button>
         <ToolTip text='Siguiente Canción'>
           <button onClick={nextSong}>
@@ -67,7 +67,7 @@ export function Controls ({ currentTime, info, repeatPlayList, handleRepeat, nex
       </div>
       <div className='flex gap-2 items-center'>
         <span className='text-xs w-9'>{formatTime(currentTime)}</span>
-        <Slider disabled={audioRef.current} className='w-[450px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
+        <Slider className='w-[450px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
         <span className='text-xs w-9'>{formatTime(audioRef.current?.duration)}</span>
       </div>
       <audio ref={audioRef} src={info?.song_mp3.url}></audio>
