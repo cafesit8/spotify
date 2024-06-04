@@ -9,7 +9,7 @@ export default function PlayList ({ url, subtitle }: { url: string, subtitle: st
     fetch(url, {
       method: 'GET',
       headers: {
-        'X-ACCESS-KEY': '$2a$10$gHFKMHWcjObYBU7ccwXtre.bg5Q5VL/l118pNlvsd7qBJv1qe9Ol2'
+        'X-ACCESS-KEY': '$2a$10$VkF6Qg0srlDuf7qTxlQ9WenxQON0HRRNbMa9tpOgk9xEo65Ad2rim'
       }
     })
       .then(res => res.json())
