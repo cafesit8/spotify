@@ -1,5 +1,5 @@
-import Header from './components/Header'
-import AviciiSection from './components/AviciiSection'
+import Header from './Components/Header'
+import AviciiSection from './Sections/Avicii/AviciiSection'
 
 export default function Dashboard () {
   return (

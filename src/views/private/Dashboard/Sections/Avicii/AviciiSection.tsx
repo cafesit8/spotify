@@ -1,6 +1,6 @@
 import { Music } from '@/types/musicList'
 import { useEffect, useState } from 'react'
-import Card from './Card'
+import Card from './components/Card'
 
 export default function AviciiSection () {
   const [playList, setPlayList] = useState<Music[]>([])
