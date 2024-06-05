@@ -24,7 +24,7 @@ export default function NavBar () {
         <span className='font-normal text-xl ml-1'>{userInfo?.name}, Bienvenido a Spotify 🙌</span>
       </div>
       <div className='flex gap-3 relative'>
-        <Button onClick={() => navigate('/upload-song')} className='rounded-full px-5'>Subir Canción</Button>
+        <Button onClick={() => navigate('/upload-song')} className='rounded-full px-5'>Publicar Canción</Button>
         <TooltipButton className='border w-9 h-9 rounded-full overflow-hidden' tooltiName={userInfo?.username} name={<img className='w-full h-full object-cover' src={userInfo?.photo_profile.url} alt="" />}>
           <div className='flex flex-col'>
             <button aria-label='account' onClick={() => navigate('/my-account')} className='hover:bg-[#303030] text-start p-2 font-normal text-sm flex gap-2'>
