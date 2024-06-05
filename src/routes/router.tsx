@@ -30,22 +30,22 @@ export const routes = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Suspense fallback={<Loading transparent />}><Dashboard /></Suspense>,
-        errorElement: <Error />
+        errorElement: <Error transparent />
       },
       {
         path: '/search',
         element: <Suspense fallback={<Loading transparent />}><Search /></Suspense>,
-        errorElement: <Error />
+        errorElement: <Error transparent />
       },
       {
         path: '/upload-song',
         element: <Suspense fallback={<Loading transparent />}><UploadSong /></Suspense>,
-        errorElement: <Error />
+        errorElement: <Error transparent />
       },
       {
         path: '/my-account',
         element: <Suspense fallback={<Loading transparent />}><MyAccount /></Suspense>,
-        errorElement: <Error />
+        errorElement: <Error transparent />
       }
     ]
   },
