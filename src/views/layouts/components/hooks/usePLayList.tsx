@@ -20,7 +20,7 @@ export default function usePLayList () {
       const result = await res.json() as Response
       setLoading(false)
       setMusicList(result.data)
-      setMusicFiltered(result.data.data)
+      setMusicFiltered(result.data.data.reverse())
     }
     getMusicList()
   }, [])
