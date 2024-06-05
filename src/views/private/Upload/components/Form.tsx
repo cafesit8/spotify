@@ -1,13 +1,32 @@
 import { Input } from '@/components/ui/Input.tsx'
 import useUploadSong from '../hooks/useUploadSong.tsx'
-import { DatePickerDemo } from '@/components/ui/InputDate.tsx'
 import { WaveSounds } from './WaveSound.tsx'
 import { UploadImageIcon, UploadMusicIcon } from '@/icons/icons.tsx'
 import logo from '@/img/Spotify_Full_Logo_RGB_Green.png'
 import { Button } from '@/components/ui/Button.tsx'
+import SelectUi from '@/components/ui/Select.tsx'
 
 export default function Form () {
-  const { loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register, isSubmitting } = useUploadSong()
+  const { loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register, isSubmitting, control } = useUploadSong()
+  const categoriesList = [{
+    id: 1,
+    name: 'Anime'
+  }, {
+    id: 2,
+    name: 'Spider-Man'
+  }, {
+    id: 3,
+    name: 'No copyright'
+  }, {
+    id: 4,
+    name: 'Electrónica'
+  }, {
+    id: 5,
+    name: 'Pop'
+  }, {
+    id: 6,
+    name: 'Pop latino'
+  }]
   return (
     <form onSubmit={handleSubmit(sendData)} className="flex flex-col gap-4">
       <img className='w-[200px]' src={logo} alt="" />
@@ -15,7 +34,7 @@ export default function Form () {
         <div className='w-full flex flex-col gap-4'>
           <Input label="Nombre de la canción" name='name' placeholder="Lovely" register={register} errors={errors} />
           <Input label="Artista" name='artist' placeholder="Billi Eilish" register={register} errors={errors} />
-          <DatePickerDemo name='post_date' disabled text='La fecha se guarda automaticamente' label='Fecha de Publicación' />
+          <SelectUi label='Categoria' list={categoriesList} control={control} name='category_id' errors={errors} />
           {song
             ? (
               <WaveSounds audioUrl={song} />

@@ -15,15 +15,16 @@ const schema = z.object({
   realease_date: z.string().min(1, { message: 'Debe seleccionar una fecha' }),
   duration: z.number(),
   url: z.string().min(1, { message: 'Debe subir una cancion' }),
-  cover: z.string().min(1, { message: 'Debe subir una imagen' })
+  cover: z.string().min(1, { message: 'Debe subir una imagen' }),
+  category_id: z.string().min(1, { message: 'Debe seleccionar una categoria' })
 })
 
-type FormFields = z.infer<typeof schema>
+export type FormFields = z.infer<typeof schema>
 
 export default function useUploadSong () {
   const [image, setImage] = useState()
   const [song, setSong] = useState()
-  const { register, formState: { errors, isSubmitting }, setValue, handleSubmit } = useForm<FormFields>({
+  const { register, formState: { errors, isSubmitting }, setValue, handleSubmit, control } = useForm<FormFields>({
     resolver: zodResolver(schema)
   })
   const [loadingSong, setLoadingSong] = useState(false)
@@ -64,6 +65,7 @@ export default function useUploadSong () {
   }
 
   async function sendData (data: FormFields) {
+    // console.log({ ...data, category_id: Number(data.category_id) })
     toast.promise(createSong({ ...data, user_id: userInfo?.id }), {
       loading: 'Cargando...',
       success: () => {
@@ -75,6 +77,6 @@ export default function useUploadSong () {
   }
 
   return {
-    loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register, isSubmitting
+    loadingSong, loadingImage, image, song, handleUploadImage, handleUploadMusic, sendData, handleSubmit, errors, register, isSubmitting, control
   }
 }
