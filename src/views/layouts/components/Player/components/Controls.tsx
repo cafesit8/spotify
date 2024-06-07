@@ -3,19 +3,11 @@ import { ToolTip } from '@/components/ui/ToolTip'
 import { NextIcon, PauseIcon, PlayIcon, PreviousIcon, RandomIcon, RepeatPlayListIcon, RepeatSongIcon } from '@/icons/icons'
 import { formatTime } from '@/services/formaCurrentTime'
 import { useCurrentSong } from '@/store/currentSong'
+import { useContextPlayer } from '../../../context/PlayerContext'
 
-type Props = {
-  audioRef: any
-  currentTime: number
-  repeatPlayList: boolean
-  handleRepeat: () => void
-  nextSong: () => void
-  prevSong: () => void
-}
-
-export default function Controls ({ currentTime, repeatPlayList, handleRepeat, nextSong, prevSong, audioRef }: Props) {
+export default function Controls () {
+  const { audioRef, currentTime, repeatPlayList, handleRepeat, nextSong, prevSong } = useContextPlayer()
   const { playing, setPlaying, currentSong } = useCurrentSong(state => state)
-
   function handleChange (e: number[]) {
     if (audioRef.current) {
       audioRef.current.currentTime = parseFloat(e[0].toString())
@@ -32,40 +24,42 @@ export default function Controls ({ currentTime, repeatPlayList, handleRepeat, n
     }
   }
   return (
-    <div className="flex-1 mx-auto text-center flex flex-col items-center gap-5 justify-center">
-      <div className='flex gap-4'>
+    <div className="lg:flex-1 w-full mx-auto text-center flex lg:flex-col flex-col-reverse items-center lg:gap-5 gap-3 justify-center">
+      <div className='flex flex-row gap-4 justify-center items-center w-full'>
         {repeatPlayList
           ? (<ToolTip text='Repetir la lista'>
-            <button onClick={handleRepeat}>
+            <button className='flex justify-center items-center' onClick={handleRepeat}>
               <RepeatPlayListIcon className='text-white w-7 h-7' />
             </button>
           </ToolTip>)
           : (<ToolTip text='Repetir canción en bucle'>
-            <button onClick={handleRepeat}>
+            <button className='flex justify-center items-center' onClick={handleRepeat}>
               <RepeatSongIcon className='text-white w-7 h-7' />
             </button>
           </ToolTip>)
         }
-        <ToolTip text='Canción Anterior'>
-          <button onClick={prevSong}>
-            <PreviousIcon className='text-white/80 hover:text-white w-7 h-7' />
+        <div className='flex lg:gap-4 gap-7 flex-1 lg:flex-none justify-center'>
+          <ToolTip text='Canción Anterior'>
+            <button className='grid place-content-center' onClick={prevSong}>
+              <PreviousIcon className='lg:text-white/80 text-white hover:text-white w-7 h-7' />
+            </button>
+          </ToolTip>
+          <button onClick={handlePlay} className='bg-white hover:scale-105 duration-150 rounded-full lg:w-9 w-11 h-11 lg:h-9 grid place-content-center'>
+            {playing ? <PauseIcon className='text-black' /> : <PlayIcon className='text-black' />}
           </button>
-        </ToolTip>
-        <button onClick={handlePlay} className='bg-white hover:scale-105 duration-150 rounded-full w-9 h-9 grid place-content-center'>
-          {playing ? <PauseIcon className='text-black' /> : <PlayIcon className='text-black' />}
-        </button>
-        <ToolTip text='Siguiente Canción'>
-          <button onClick={nextSong}>
-            <NextIcon className='text-white/80 hover:text-white w-7 h-7' />
-          </button>
-        </ToolTip>
-        <button>
+          <ToolTip text='Siguiente Canción'>
+            <button className='grid place-content-center' onClick={nextSong}>
+              <NextIcon className='lg:text-white/80 text-white hover:text-white w-7 h-7' />
+            </button>
+          </ToolTip>
+        </div>
+        <button className='grid place-content-center'>
           <RandomIcon className='duration-150 w-7 h-7' />
         </button>
       </div>
-      <div className='flex gap-2 items-center'>
+      <div className='flex gap-2 items-center w-full justify-center'>
         <span className='text-xs w-9'>{formatTime(currentTime)}</span>
-        <Slider className='w-[450px]' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
+        <Slider className='lg:w-[450px] w-full' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
         <span className='text-xs w-9'>{formatTime(audioRef.current?.duration)}</span>
       </div>
       <audio ref={audioRef} src={currentSong?.song_mp3.url}></audio>

@@ -6,7 +6,7 @@ body {
   font-family: 'Outfit Variable', sans-serif;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1125px) {
   body{
     scrollbar-width: thin;
     scrollbar-color: #272727 transparent; 
@@ -102,5 +102,5 @@ body {
 }
 
 .custom-date-input::-webkit-calendar-picker-indicator {
-  filter: invert(1); /* Invierte el color del icono */
+  filter: invert(1);
 }

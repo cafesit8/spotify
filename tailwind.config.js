@@ -5,6 +5,9 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
+    screens: {
+      lg: '1125px'
+    },
     container: {
       center: true,
       padding: '2rem',

@@ -13,7 +13,7 @@ type Props = {
 export default function PlayList ({ handleCollapse, collapse }: Props) {
   const { errors, register, handleInputChange, musicFiltered, loading } = usePLayList()
   return (
-    <aside className='[grid-area:playlist] playlist bg-[#141414] rounded-xl p-5 text-white flex flex-col gap-4'>
+    <aside className='[grid-area:playlist] playlist bg-[#141414] rounded-xl p-5 text-white lg:flex hidden flex-col gap-4'>
       <div className='flex justify-between text-white/70'>
         <h3 className='flex gap-4 font-semibold'><BookIcon /> Música recién compartida</h3>
         <ToolTip text={`${collapse ? 'Mostrar menos' : 'Mostrar más'}`}>

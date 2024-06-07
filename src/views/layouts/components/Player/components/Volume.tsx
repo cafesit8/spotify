@@ -2,19 +2,15 @@ import { Drawer, DrawerTrigger } from '@/components/ui/Drawer'
 import { ToolTip } from '@/components/ui/ToolTip'
 import { ListIcon, MutedIcon, NormalVolumenIcon } from '@/icons/icons'
 import { Slider } from '@/components/ui/Slider'
-import React, { ReactNode, Suspense, lazy } from 'react'
-import Loading from '@/views/public/Loading'
-const DrawerContainer = lazy(() => import('../../Drawer/Drawer'))
+import { Suspense } from 'react'
+import Header from '../../Drawer/components/Header'
+import Buttons from '../../Drawer/components/Buttons'
+import Table from '../../Drawer/components/Table'
+import DrawerContainer from '../../Drawer/DrawerContainer'
+import { useContextPlayer } from '@/views/layouts/context/PlayerContext'
 
-type Props = {
-  handleMuted: () => void
-  handleVolume: (e: number[]) => void
-  volume: number
-  volumeStep: () => ReactNode
-  audioRef: React.RefObject<HTMLAudioElement> | null
-}
-
-export default function Volume ({ handleMuted, handleVolume, volume, volumeStep, audioRef }: Props) {
+export default function Volume () {
+  const { handleMuted, handleVolume, volume, volumeStep, audioRef } = useContextPlayer()
   function renderIcon () {
     if (audioRef?.current == null) {
       return <NormalVolumenIcon className='w-6 h-6' />
@@ -23,16 +19,26 @@ export default function Volume ({ handleMuted, handleVolume, volume, volumeStep,
     }
   }
   return (
-    <div className="flex items-center gap-4 justify-end">
+    <div className="lg:flex hidden items-center gap-4 justify-end">
       <Drawer>
         <DrawerTrigger>
           <ToolTip text='Fila de canciones'>
             <ListIcon className='w-6 h-6 mt-[5px]' />
           </ToolTip>
         </DrawerTrigger>
-        <Suspense fallback={<Loading />}>
-          <DrawerContainer />
-        </Suspense>
+        <DrawerContainer>
+          <main className='lg:w-[1300px] w-full m-auto h-full p-3 flex flex-col gap-6 overflow-y-auto'>
+            <Suspense fallback={null}>
+              <Header />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Buttons />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Table />
+            </Suspense>
+          </main>
+        </DrawerContainer>
       </Drawer>
       <button onClick={handleMuted}>
         {renderIcon()}

@@ -12,7 +12,7 @@ export default function Card ({ song }: { song: Music }) {
           <img src={song?.song_cover.url} className="object-cover w-full h-full rounded-md" />
         </picture>
         <div className="flex flex-auto flex-col">
-          <h4 className="text-white text-base font-normal">
+          <h4 className="text-white text-base font-normal w-full truncate">
             {song.name}
           </h4>
           <span className="text-[14px] text-gray-400 truncate w-full">
