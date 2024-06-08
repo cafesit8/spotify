@@ -13,17 +13,17 @@ export default function DashboardLayout () {
   const handleCollapse = () => setCollapse(prev => !prev)
   return (
     <div className={`app bg-black grid h-dvh text-white gap-2 p-4 ${collapse ? 'grid-cols-collapse' : 'grid-cols-no-collapse'}`}>
-      <Suspense fallback={null}>
-        <SearchItem />
-      </Suspense>
-      <Suspense fallback={null}>
-        <PlayList collapse={collapse} handleCollapse={handleCollapse} />
-      </Suspense>
       <Suspense fallback={<MainSkeleton />}>
         <Main />
       </Suspense>
       <Suspense fallback={<PlayerSkeleton />}>
         <Player />
+      </Suspense>
+      <Suspense fallback={null}>
+        <SearchItem />
+      </Suspense>
+      <Suspense fallback={null}>
+        <PlayList collapse={collapse} handleCollapse={handleCollapse} />
       </Suspense>
     </div>
   )

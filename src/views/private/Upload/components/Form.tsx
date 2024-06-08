@@ -29,7 +29,7 @@ export default function Form () {
   }]
   return (
     <form onSubmit={handleSubmit(sendData)} className="flex flex-col gap-4">
-      <img className='w-[200px]' fetchPriority='low' src='/Spotify_Full_Logo_RGB_Green.webp' alt="" />
+      <img className='w-[200px]' fetchPriority='high' src='/Spotify_Full_Logo_RGB_Green.webp' alt="" />
       <div className='flex gap-4 w-full'>
         <div className='w-full flex flex-col gap-4'>
           <Input label="Nombre de la canción" name='name' placeholder="Lovely" register={register} errors={errors} />

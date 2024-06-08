@@ -1,5 +1,6 @@
 import { Music } from '@/types/musicList'
-import Row from './Row'
+import { Suspense, lazy } from 'react'
+const Row = lazy(() => import('./Row'))
 
 type Props = {
   collapse?: boolean
@@ -21,7 +22,9 @@ export default function Table ({ collapse, musicFiltered }: Props) {
       <tbody>
         <tr className='h-2'></tr>
         {musicFiltered?.map(song => (
-          <Row key={song.id} collapse={collapse} song={song} />
+          <Suspense fallback={null}>
+            <Row key={song.id} collapse={collapse} song={song} />
+          </Suspense>
         ))}
       </tbody>
     </table>
