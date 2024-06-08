@@ -12,7 +12,6 @@ type Props = {
 
 export default function PlayList ({ handleCollapse, collapse }: Props) {
   const { errors, register, handleInputChange, musicFiltered, loading } = usePLayList()
-  console.log('playlist')
   return (
     <aside className='[grid-area:playlist] playlist bg-[#141414] rounded-xl p-5 text-white lg:flex hidden flex-col gap-4'>
       <div className='flex justify-between text-white/70'>
