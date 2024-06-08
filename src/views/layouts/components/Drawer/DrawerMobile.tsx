@@ -1,9 +1,8 @@
 import { DownIcon } from '@/icons/icons'
-import { useCurrentSong } from '@/store/currentSong'
 import { Drawer } from '@material-tailwind/react'
 import type { DrawerProps } from '@material-tailwind/react'
 import { ReactNode } from 'react'
-import { usePalette } from 'react-palette'
+import useDrawerMobile from './hooks/useDrawerMobile'
 
 export type DrawerMobileProps = DrawerProps & {
   open: boolean
@@ -13,9 +12,7 @@ export type DrawerMobileProps = DrawerProps & {
 }
 
 export default function DrawerMobile ({ open, handleOpen, children, placement = 'bottom' }: DrawerMobileProps) {
-  const currentSong = useCurrentSong(state => state.currentSong)
-  const { data } = usePalette(currentSong?.song_cover.url ?? '#8a8b8b')
-  const background = data.lightVibrant ?? '#8a8b8b'
+  const background = useDrawerMobile()
 
   return (
     <Drawer
