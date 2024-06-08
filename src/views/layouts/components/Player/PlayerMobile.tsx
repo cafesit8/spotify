@@ -1,9 +1,9 @@
 import { PauseIcon, PlayIcon } from '@/icons/icons'
 import { useCurrentSong } from '@/store/currentSong'
-import { useState } from 'react'
-import DrawerMobile from '../Drawer/DrawerMobile'
-import Info from './components/Info'
-import Controls from './components/Controls'
+import { Suspense, lazy, useState } from 'react'
+const DrawerMobile = lazy(() => import('../Drawer/DrawerMobile'))
+const Info = lazy(() => import('./components/Info'))
+const Controls = lazy(() => import('./components/Controls'))
 
 export default function PlayerMobile () {
   const [open, setOpen] = useState(false)
@@ -24,10 +24,12 @@ export default function PlayerMobile () {
       <button onClick={() => setPlaying(!playing)} className='h-full w-14 grid place-content-center'>
         {playing ? <PauseIcon className='text-white w-6 h-6' /> : <PlayIcon className='text-white w-6 h-6' />}
       </button>
-      <DrawerMobile open={open} handleOpen={() => setOpen(false)}>
-        <Info />
-        <Controls />
-      </DrawerMobile>
+      <Suspense fallback={null}>
+        <DrawerMobile open={open} handleOpen={() => setOpen(false)}>
+          <Info />
+          <Controls />
+        </DrawerMobile>
+      </Suspense>
     </>
   )
 }

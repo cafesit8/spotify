@@ -1,6 +1,5 @@
 import { Suspense, lazy } from 'react'
-import PlayerMobile from './PlayerMobile'
-
+const PlayerMobile = lazy(() => import('./PlayerMobile'))
 const Controls = lazy(() => import('./components/Controls'))
 const Info = lazy(() => import('./components/Info'))
 const Volume = lazy(() => import('./components/Volume'))
@@ -20,7 +19,9 @@ export default function Player () {
         </Suspense>
       </div>
       <div className='lg:hidden flex items-center w-full h-full'>
-        <PlayerMobile />
+        <Suspense fallback={null}>
+          <PlayerMobile />
+        </Suspense>
       </div>
     </footer>
   )
