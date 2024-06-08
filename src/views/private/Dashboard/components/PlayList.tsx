@@ -36,9 +36,9 @@ export default function PlayList ({ url, subtitle }: { url: string, subtitle: st
 
   return (
     <section ref={ref} className='flex flex-col gap-2'>
-      {playList.length > 0 && <h3 className="text-3xl text-white/90">{subtitle}</h3>}
+      {playList.length > 0 && <h3 className="lg:text-3xl text-xl text-white/90">{subtitle}</h3>}
       {playList.length > 0
-        ? <div className="grid gap-3 xl:[grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] lg:[grid-template-columns:repeat(auto-fill,minmax(170px,1fr))] sm:[grid-template-columns:repeat(auto-fill,minmax(120px,1fr))] [grid-template-columns:repeat(auto-fill,minmax(70px,1fr))]">
+        ? <div className="grid lg:gap-3 gap-2 xl:[grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] lg:[grid-template-columns:repeat(auto-fill,minmax(170px,1fr))] sm:[grid-template-columns:repeat(auto-fill,minmax(120px,1fr))] [grid-template-columns:repeat(auto-fill,minmax(100px,1fr))]">
           {playList?.map(song => (
             <Card key={song.id} song={song} />
           ))}

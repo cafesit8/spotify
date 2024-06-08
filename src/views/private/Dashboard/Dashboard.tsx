@@ -1,8 +1,8 @@
 import { Suspense, lazy } from 'react'
 import Header from './Components/Header'
 import Loading from '@/views/public/Loading'
-import Ncs from './Sections/NCS/Ncs'
-import Anime from './Sections/Anime/Anime'
+const Ncs = lazy(() => import('./Sections/NCS/Ncs'))
+const Anime = lazy(() => import('./Sections/Anime/Anime'))
 const CncoSection = lazy(() => import('./Sections/CNCO/CncoSection'))
 const SpidermanSection = lazy(() => import('./Sections/Spiderman/Spiderman'))
 const AviciiSection = lazy(() => import('./Sections/Avicii/AviciiSection'))
