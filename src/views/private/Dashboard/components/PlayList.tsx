@@ -10,7 +10,7 @@ export default function PlayList ({ url, subtitle }: { url: string, subtitle: st
   const { ref } = useInView({
     threshold: 0.3,
     onChange (inView) {
-      // inView && getData()
+      inView && getData()
     }
   })
 

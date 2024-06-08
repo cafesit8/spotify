@@ -10,12 +10,12 @@
     "playlist main main main"
     "footer footer footer footer"
   ;
-  height: 100svh;
+  height: 100dvh;
 }
 
 @media screen and (max-width: 1125px) {
   .app {
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr) 70px;
     grid-template-areas:
     "main main main"
     "main main main"
@@ -29,5 +29,11 @@
 
   .grid-cols-no-collapse {
     grid-template-columns: auto;
+  }
+
+  .footer {
+    grid-area: footer;
+  max-height: 70px;
+  overflow: hidden;
   }
 }
