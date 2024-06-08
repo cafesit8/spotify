@@ -13,7 +13,7 @@ export default function DashboardLayout () {
   const [collapse, setCollapse] = useState(false)
   const handleCollapse = () => setCollapse(prev => !prev)
   return (
-    <div className={`app bg-black grid h-dvh text-white gap-2 p-4 ${collapse ? 'grid-cols-collapse' : 'grid-cols-no-collapse'}`}>
+    <div className={`app bg-black grid h-dvh text-white lg:gap-2 lg:p-4 p-0 ${collapse ? 'grid-cols-collapse' : 'grid-cols-no-collapse'}`}>
       <Suspense fallback={<MainSkeleton />}>
         <Main />
       </Suspense>

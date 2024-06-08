@@ -10,7 +10,7 @@ export default function NavBar () {
   const navigate = useNavigate()
   return (
     <nav className='flex justify-between items-center'>
-      <div className='flex items-center gap-2'>
+      <div className='lg:flex hidden items-center gap-2'>
         <ToolTip text='Atrás'>
           <button aria-label='Back' onClick={() => navigate(-1)} className='text-white flex items-center bg-[#292929] rounded-full p-1'>
             <LeftIcon className='w-5 h-5' />
@@ -23,7 +23,7 @@ export default function NavBar () {
         </ToolTip>
         <span className='font-normal text-xl ml-1'>{userInfo?.name}, Bienvenido a Spotify 🙌</span>
       </div>
-      <div className='flex gap-3 relative'>
+      <div className='flex items-center gap-3 relative lg:w-auto w-full justify-between lg:justify-normal'>
         <Button onClick={() => navigate('/upload-song')} className='rounded-full px-5'>Publicar Canción</Button>
         <TooltipButton className='border w-9 h-9 rounded-full overflow-hidden' tooltiName={userInfo?.username} name={<img className='w-full h-full object-cover' src={userInfo?.photo_profile.url} alt="" />}>
           <div className='flex flex-col'>

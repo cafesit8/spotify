@@ -15,11 +15,11 @@ export default function TooltipButton ({ name, tooltiName, children, className }
       <TooltipProvider delayDuration={150}>
         <Tooltip>
           <TooltipTrigger>
-            <PopoverTrigger className={`hover:scale-105 duration-150 ${className}`}>
+            <PopoverTrigger className={`hover:scale-105 grid place-content-center duration-150 ${className}`}>
               {name}
             </PopoverTrigger>
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent className='lg:block hidden'>
             <p>{tooltiName}</p>
           </TooltipContent>
         </Tooltip>
