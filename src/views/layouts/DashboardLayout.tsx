@@ -3,6 +3,7 @@ import './styles.css'
 import { Suspense, lazy, useState } from 'react'
 import MainSkeleton from './skeletons/MainSkeleton'
 import PlayerSkeleton from './skeletons/PlayerSkeleton'
+import PlayerContext from './context/PlayerContext'
 const SearchItem = lazy(() => import('./components/SearchSection/Search'))
 const Player = lazy(() => import('./components/Player/Player'))
 const PlayList = lazy(() => import('./components/PlayList/PlayList'))
@@ -17,7 +18,9 @@ export default function DashboardLayout () {
         <Main />
       </Suspense>
       <Suspense fallback={<PlayerSkeleton />}>
-        <Player />
+        <PlayerContext>
+          <Player />
+        </PlayerContext>
       </Suspense>
       <Suspense fallback={null}>
         <SearchItem />
