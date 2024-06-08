@@ -72,8 +72,8 @@ export default function Controls () {
         <Slider className='lg:flex hidden lg:w-[450px] w-full' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
         <span className='lg:block hidden text-xs w-9'>{formatTime(audioRef.current?.duration)}</span>
         <div className='w-full flex lg:hidden flex-col items-start px-1'>
-          <h6 className='font-light text-white text-base'>{currentSong?.name || 'Título de la canción'}</h6>
-          <h6 className='font-light text-white/80 text-sm'>{currentSong?.artist || 'Nombre del artista'}</h6>
+          <h6 className='font-light text-white text-lg truncate'>{currentSong?.name || 'Título de la canción'}</h6>
+          <h6 className='font-light text-white/80 text-sm truncate mb-1'>{currentSong?.artist || 'Nombre del artista'}</h6>
         </div>
         <div className='lg:hidden w-full px-1'>
           <Slider className='w-full' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />

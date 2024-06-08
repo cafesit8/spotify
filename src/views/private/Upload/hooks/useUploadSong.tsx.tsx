@@ -65,7 +65,6 @@ export default function useUploadSong () {
   }
 
   async function sendData (data: FormFields) {
-    // console.log({ ...data, category_id: Number(data.category_id) })
     toast.promise(createSong({ ...data, user_id: userInfo?.id }), {
       loading: 'Cargando...',
       success: () => {

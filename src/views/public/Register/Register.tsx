@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import logo from '@/img/Spotify_Primary_Logo_RGB_White.png'
+import logo from '@/img/Spotify_Primary_Logo_RGB_White.webp'
 import '@fontsource-variable/outfit'
 import useRegister from './hooks/useRegister'
 

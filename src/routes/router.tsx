@@ -13,23 +13,23 @@ const MyAccount = lazy(() => import('@/views/private/MyCount/MyAccount'))
 export const routes = createBrowserRouter([
   {
     path: '/login',
-    element: <Suspense fallback={<Loading />}><Login /></Suspense>,
+    element: <Suspense fallback={<Loading fullScreen />}><Login /></Suspense>,
     errorElement: <Error />
   },
   {
     path: '/register',
-    element: <Suspense fallback={<Loading />}><Register /></Suspense>,
+    element: <Suspense fallback={<Loading fullScreen />}><Register /></Suspense>,
     errorElement: <Error />
   },
   {
     path: '/',
-    element: <Suspense fallback={<Loading />}><DashboardLayout /></Suspense>,
+    element: <Suspense fallback={<Loading fullScreen />}><DashboardLayout /></Suspense>,
     errorElement: <Error />,
     children: [
       { element: <Navigate to="/dashboard" />, index: true },
       {
         path: '/dashboard',
-        element: <Suspense fallback={<Loading transparent />}><Dashboard /></Suspense>,
+        element: <Suspense fallback={<Loading transparent fullScreen />}><Dashboard /></Suspense>,
         errorElement: <Error transparent />
       },
       {

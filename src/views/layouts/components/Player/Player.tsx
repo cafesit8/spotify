@@ -6,7 +6,7 @@ const Volume = lazy(() => import('./components/Volume'))
 
 export default function Player () {
   return (
-    <footer className='footer [grid-area:footer] footer bg-[#141414] lg:rounded-xl rounded-md'>
+    <footer className='footer [grid-area:footer] bg-[#141414] lg:rounded-xl rounded-md'>
       <div className='rounded-xl lg:flex items-center h-full hidden justify-between p-3 gap-3'>
         <Suspense fallback={null}>
           <Info />

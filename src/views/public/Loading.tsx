@@ -1,9 +1,8 @@
-import gif from '@/img/spotify-loading-unscreen.gif'
-
-export default function Loading ({ transparent = false }: { transparent?: boolean }) {
+import './loader.css'
+export default function Loading ({ transparent = false, fullScreen = false }: { transparent?: boolean, fullScreen?: boolean }) {
   return (
-    <div className={`${transparent ? 'bg-transparent' : 'bg-[#141414]'} w-full min-h-svh grid place-content-center`}>
-      <img className='w-[450px]' src={gif} alt="" />
+    <div className={`${transparent ? 'bg-transparent' : 'bg-[#141414]'} w-full ${fullScreen ? 'h-dvh' : 'h-full'} grid place-content-center`}>
+      <div className='loader'></div>
     </div>
   )
 }

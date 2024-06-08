@@ -1,5 +1,4 @@
 import { Input } from '@/components/ui/Input'
-import logo from '@/img/Spotify_Full_Logo_RGB_Green.webp'
 import { Button } from '@/components/ui/Button'
 import { EditIcon } from '@/icons/icons'
 import { toast } from 'sonner'
@@ -15,7 +14,7 @@ export default function MyAccount () {
       </header>
       <form onSubmit={handleSubmit(sendData)} className="flex flex-col gap-4">
         <div className='flex flex-col gap-7'>
-          <img className='w-[200px]' src={logo} alt="" />
+          <img className='w-[200px]' src='/Spotify_Full_Logo_RGB_Green.webp' alt="" />
           <div className='grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(370px,1fr))]'>
             <div className='flex flex-col gap-4 w-full'>
               <Input label="Nombre" name='name' placeholder="Pepito" register={register} errors={errors} />

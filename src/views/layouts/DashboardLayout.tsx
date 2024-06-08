@@ -1,6 +1,8 @@
 import '@fontsource-variable/outfit'
 import './styles.css'
 import { Suspense, lazy, useState } from 'react'
+import MainSkeleton from './skeletons/MainSkeleton'
+import PlayerSkeleton from './skeletons/PlayerSkeleton'
 const SearchItem = lazy(() => import('./components/SearchSection/Search'))
 const Player = lazy(() => import('./components/Player/Player'))
 const PlayList = lazy(() => import('./components/PlayList/PlayList'))
@@ -10,17 +12,17 @@ export default function DashboardLayout () {
   const [collapse, setCollapse] = useState(false)
   const handleCollapse = () => setCollapse(prev => !prev)
   return (
-    <div className={`app bg-black grid text-white gap-2 p-4 ${collapse ? 'grid-cols-collapse' : 'grid-cols-no-collapse'}`}>
+    <div className={`app bg-black grid h-dvh text-white gap-2 p-4 ${collapse ? 'grid-cols-collapse' : 'grid-cols-no-collapse'}`}>
       <Suspense fallback={null}>
         <SearchItem />
       </Suspense>
       <Suspense fallback={null}>
         <PlayList collapse={collapse} handleCollapse={handleCollapse} />
       </Suspense>
-      <Suspense fallback={null}>
+      <Suspense fallback={<MainSkeleton />}>
         <Main />
       </Suspense>
-      <Suspense fallback={null}>
+      <Suspense fallback={<PlayerSkeleton />}>
         <Player />
       </Suspense>
     </div>
