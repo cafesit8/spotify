@@ -17,7 +17,6 @@ export default function DrawerMobile ({ open, handleOpen, children, placement = 
   return (
     <Drawer
       placement={placement}
-      className={`bg-[#141414] lg:hidden bg-gradient-to-b from-[${background}] to-[#141414]`}
       open={open}
       onClose={handleOpen}
       size={2000}
