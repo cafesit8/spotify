@@ -41,12 +41,14 @@ export default function PlayerContext ({ children }: PlayerContextType) {
     const nextIndex = currentIndex === playList.length - 1 ? 0 : currentIndex + 1
     setCurrentIndex(nextIndex)
     setCurrentSong(playList[nextIndex])
+    setPlaying(true)
   }
 
   function prevSong () {
     const prevIndex = currentIndex === 0 ? playList.length - 1 : currentIndex - 1
     setCurrentIndex(prevIndex)
     setCurrentSong(playList[prevIndex])
+    setPlaying(true)
   }
 
   const handleRepeat = () => setRepeatPlayList(!repeatPlayList)
