@@ -2,7 +2,7 @@ import { Input } from '@/components/ui/Input.tsx'
 import useUploadSong from '../hooks/useUploadSong.tsx'
 import { WaveSounds } from './WaveSound.tsx'
 import { UploadImageIcon, UploadMusicIcon } from '@/icons/icons.tsx'
-import logo from '@/img/Spotify_Full_Logo_RGB_Green.png'
+import logo from '@/img/Spotify_Full_Logo_RGB_Green.webp'
 import { Button } from '@/components/ui/Button.tsx'
 import SelectUi from '@/components/ui/Select.tsx'
 

@@ -1,4 +1,4 @@
-import error from '@/img/404_error.png'
+import error from '@/img/404_error.webp'
 import '@fontsource-variable/outfit'
 
 export default function Error ({ transparent = false }: { transparent?: boolean }) {

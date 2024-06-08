@@ -1,5 +1,5 @@
 import { Input } from '@/components/ui/Input'
-import logo from '@/img/Spotify_Full_Logo_RGB_Green.png'
+import logo from '@/img/Spotify_Full_Logo_RGB_Green.webp'
 import { Button } from '@/components/ui/Button'
 import { EditIcon } from '@/icons/icons'
 import { toast } from 'sonner'
