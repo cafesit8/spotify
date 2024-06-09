@@ -1,7 +1,7 @@
 import { Music } from '@/types/musicList'
 import { useState } from 'react'
 import Card from './Card'
-import Skeleton from './Skeleton'
+import Skeleton from '../Skeleton/Skeleton'
 import { useInView } from 'react-intersection-observer'
 import { toast } from 'sonner'
 
