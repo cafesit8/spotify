@@ -12,8 +12,8 @@ export default function PlayerMobile () {
     <>
       <button onClick={() => setOpen(!open)} type='button' className='h-full flex-1 p-0 overflow-hidden'>
         <article className='flex h-full items-center gap-2 overflow-hidden'>
-          <picture className='max-w-[55px] h-full rounded-md overflow-hidden block'>
-            <img className='w-full h-full object-cover' src={currentSong?.song_cover?.url || 'https://t2.tudocdn.net/700696?w=824&h=494'} alt="Portada de la canción" />
+          <picture className='max-w-[55px] aspect-square h-full rounded-md overflow-hidden block'>
+            <img className='w-full h-full object-cover bg-[#292929]' src={currentSong?.song_cover?.url || 'https://t2.tudocdn.net/700696?w=824&h=494'} alt="Portada de la canción" />
           </picture>
           <div>
             <h6 className='font-light text-start text-white lg:text-base text-sm truncate'>{currentSong?.name || 'Título de la canción'}</h6>
