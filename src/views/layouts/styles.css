@@ -29,6 +29,10 @@
   ;
   }
 
+  .playlist {
+    display: none;
+  }
+
   .grid-cols-no-collapse {
     grid-template-columns: auto;
   }
