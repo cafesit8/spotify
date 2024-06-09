@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 import withMt from '@material-tailwind/react/utils/withMT'
+import flowbite from 'flowbite-react/tailwind'
 
 export default withMt({
   content: [
     './index.html',
-    './src/**/*.{js,ts,jsx,tsx}'
+    './src/**/*.{js,ts,jsx,tsx}',
+    flowbite.content()
   ],
   theme: {
     screens: {
@@ -77,5 +79,5 @@ export default withMt({
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [require('tailwindcss-animate'), flowbite.plugin()]
 })
