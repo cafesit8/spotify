@@ -17,7 +17,7 @@ export default function Register () {
         <Input name='username' label='Usuario' errors={errors} register={register} placeholder='pepito88' />
         {photo
           ? (
-            <img className='max-h-36 w-fit m-auto' src={photo!} alt="" />
+            <img className='max-h-36 w-fit m-auto' src={photo!} alt="Foto de perfil" />
           )
           : (
             <>

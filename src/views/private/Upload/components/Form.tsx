@@ -29,7 +29,7 @@ export default function Form () {
   }]
   return (
     <form onSubmit={handleSubmit(sendData)} className="flex flex-col gap-4">
-      <img className='w-[200px]' fetchPriority='high' src='/Spotify_Full_Logo_RGB_Green.webp' alt="" />
+      <img className='w-[200px]' fetchPriority='high' src='/Spotify_Full_Logo_RGB_Green.webp' alt="Logo de spotify" />
       <div className='flex gap-4 w-full'>
         <div className='w-full flex flex-col gap-4'>
           <Input label="Nombre de la canción" name='name' placeholder="Lovely" register={register} errors={errors} />
@@ -60,7 +60,7 @@ export default function Form () {
           {image
             ? (
               <div className='border border-dashed rounded-lg w-full max-h-[200px] block'>
-                <img className='w-full h-full object-contain' src={image} alt="" />
+                <img className='w-full h-full object-contain' src={image} alt="Imagen de la canción recién subida" />
               </div>
             )
             : <label className={`cursor-pointer ${errors.cover ? 'border-red-400' : ''} border-[1px] mt-1 flex justify-center items-center border-dashed rounded-md p-4 text-center h-[150px]`}>

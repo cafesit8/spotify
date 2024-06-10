@@ -15,7 +15,7 @@ export default function Search () {
               <h4 className='lg:text-2xl text-lg font-bold'>Anime</h4>
             </div>
             <div className='relative w-1/2'>
-              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67706f00000002678b81229c4b783dd816d87a" alt="" />
+              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67706f00000002678b81229c4b783dd816d87a" alt="Portada de la sección Anime" />
             </div>
           </article>
           <article className='aspect-square w-full h-full relative rounded-lg bg-[#7f49d4] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
@@ -23,7 +23,7 @@ export default function Search () {
               <h4 className='lg:text-2xl text-lg font-bold'>Spider-Man</h4>
             </div>
             <div className='relative w-1/2'>
-              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67706f000000022a2942d014b54753ea2938f3" alt="" />
+              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67706f000000022a2942d014b54753ea2938f3" alt="Portada de la sección Spider-Man" />
             </div>
           </article>
           <article className='aspect-square w-full h-full relative rounded-lg bg-[#3ba140] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
@@ -31,7 +31,7 @@ export default function Search () {
               <h4 className='lg:text-2xl text-lg font-bold'>No Copyright</h4>
             </div>
             <div className='relative w-1/2'>
-              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8468a229b4139569f5cf80c8c9" alt="" />
+              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8468a229b4139569f5cf80c8c9" alt="Portada de la sección No Copyright" />
             </div>
           </article>
           <article className='aspect-square w-full h-full relative rounded-lg bg-[#c79d43] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
@@ -39,7 +39,7 @@ export default function Search () {
               <h4 className='lg:text-2xl text-lg font-bold'>Electrónica</h4>
             </div>
             <div className='relative w-1/2'>
-              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67616d0000b273660ee24281a547103f466ff5" alt="" />
+              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67616d0000b273660ee24281a547103f466ff5" alt="Portada de la sección Electrónicas" />
             </div>
           </article>
           <article className='aspect-square w-full h-full relative rounded-lg bg-[#c4885e] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
@@ -47,7 +47,7 @@ export default function Search () {
               <h4 className='lg:text-2xl text-lg font-bold'>Pop</h4>
             </div>
             <div className='relative w-1/2'>
-              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67616d00001e022a038d3bf875d23e4aeaa84e" alt="" />
+              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67616d00001e022a038d3bf875d23e4aeaa84e" alt="Portada de la sección Pop" />
             </div>
           </article>
           <article className='aspect-square w-full h-full relative rounded-lg bg-[#c79d43] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
@@ -55,7 +55,7 @@ export default function Search () {
               <h4 className='lg:text-2xl text-lg font-bold'>Pop latino</h4>
             </div>
             <div className='relative w-1/2'>
-              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67616d0000b2738aa4f3ab66823042785b7f17" alt="" />
+              <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67616d0000b2738aa4f3ab66823042785b7f17" alt="Portada de la sección Pop latino" />
             </div>
           </article>
         </div>

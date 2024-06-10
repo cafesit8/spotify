@@ -40,7 +40,7 @@ export default function Table () {
               <div className='flex justify-center relative'>
                 <span className='text-white/80 font-light'>
                   {currentSong?.id === song.id
-                    ? <img className='w-5 h-8' src={soundWaves} alt="" />
+                    ? <img className='w-5 h-8' src={soundWaves} alt="efecto de sounds" />
                     : (
                       <>
                         <PlayIcon className='w-5 h-5 absolute inset-0 m-auto group/edit invisible group-hover/item:visible' />

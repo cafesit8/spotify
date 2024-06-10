@@ -14,7 +14,7 @@ export default function MyAccount () {
       </header>
       <form onSubmit={handleSubmit(sendData)} className="flex flex-col gap-4">
         <div className='flex flex-col gap-7'>
-          <img className='w-[200px]' src='/Spotify_Full_Logo_RGB_Green.webp' alt="" />
+          <img className='w-[200px]' src='/Spotify_Full_Logo_RGB_Green.webp' alt="Logo de spotify" />
           <div className='grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(370px,1fr))]'>
             <div className='flex flex-col gap-4 w-full'>
               <Input label="Nombre" name='name' placeholder="Pepito" register={register} errors={errors} />
@@ -33,7 +33,7 @@ export default function MyAccount () {
                     <EditIcon className='w-10 h-10' />
                     <span className='text-xl'>Elegir foto</span>
                   </div>
-                  <img className='w-full h-full object-cover' src={userInfo?.photo_profile.url} alt="" />
+                  <img className='w-full h-full object-cover' src={userInfo?.photo_profile.url} alt={`Portada del usuario ${userInfo?.photo_profile.url}`} />
                   <input onChange={() => toast.error('Actualizar la imagen no está disponible en estos momentos :(')} type="file" accept='image/*' className='hidden' />
                 </div>
               </label>

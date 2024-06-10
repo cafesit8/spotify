@@ -21,7 +21,7 @@ export default function DrawerContentMobile () {
               : <span>{String(i + 1).padStart(2, '0')}</span>}
           </div>
           <picture className='pr-1'>
-            <img className='rounded-md' width={50} src={song?.song_cover?.url || 'https://t2.tudocdn.net/700696?w=824&h=494'} alt="" />
+            <img className='rounded-md' width={50} src={song?.song_cover?.url || 'https://t2.tudocdn.net/700696?w=824&h=494'} alt={`Portada de la cancion ${song?.song_cover?.url}`} />
           </picture>
           <div>
             <h6 className='font-light text-white text-base w-full truncate'>{song?.name || 'Título de la canción'}</h6>
