@@ -1,6 +1,7 @@
 import { Music } from '@/types/musicList'
 import { useState } from 'react'
-import Card from './Card'
+// import Card from './Card'
+import { CardMemo } from './Card'
 import Skeleton from '../Skeleton/Skeleton'
 import { useInView } from 'react-intersection-observer'
 import { toast } from 'sonner'
@@ -40,7 +41,7 @@ export default function PlayList ({ url, subtitle }: { url: string, subtitle: st
       {playList.length > 0
         ? <div className="grid lg:gap-3 gap-2 xl:[grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] lg:[grid-template-columns:repeat(auto-fill,minmax(170px,1fr))] sm:[grid-template-columns:repeat(auto-fill,minmax(120px,1fr))] [grid-template-columns:repeat(auto-fill,minmax(100px,1fr))]">
           {playList?.map(song => (
-            <Card key={song.id} song={song} />
+            <CardMemo key={song.id} song={song} />
           ))}
         </div>
         : <Skeleton />}

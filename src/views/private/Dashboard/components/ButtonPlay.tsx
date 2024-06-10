@@ -19,7 +19,7 @@ export default function ButtonPlay ({ song }: { song: Music }) {
     setPlaying(true)
   }
   return (
-    <button onClick={handleClick} className="card-play-button rounded-full bg-green-500 p-4 hover:scale-105 transition">
+    <button onClick={handleClick} aria-label='play' className="lg:block hidden card-play-button rounded-full bg-green-500 p-4 hover:scale-105 transition">
       {isPlaying && playing ? <PauseIcon className='text-black' /> : <PlayIcon className='text-black' />}
     </button>
   )

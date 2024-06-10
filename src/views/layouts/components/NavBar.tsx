@@ -26,10 +26,10 @@ export default function NavBar () {
       <div className='flex items-center gap-3 relative lg:w-auto w-full justify-between lg:justify-normal'>
         <Button onClick={() => navigate('/upload-song')} className='rounded-full px-5'>Publicar Canción</Button>
         <div className='flex items-center gap-3'>
-          <button className='block lg:hidden' onClick={() => navigate('/search')}>
+          <button aria-label='search' className='block lg:hidden' onClick={() => navigate('/search')}>
             <SearchIcon className='w-6 h-6' />
           </button>
-          <TooltipButton className='border w-9 h-9 rounded-full overflow-hidden' tooltiName={userInfo?.username} name={<img className='lg:w-full lg:h-full w-9 h-9 rounded-full lg:rounded-none object-cover' src={userInfo?.photo_profile?.url || 'https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg'} alt="avatar del usuario" />}>
+          <TooltipButton className='border w-9 h-9 rounded-full overflow-hidden' tooltiName={userInfo?.username} name={<img className='lg:w-full lg:h-full w-9 h-9 rounded-full lg:rounded-none object-cover' src={userInfo?.photo_profile?.url || '/user.jpg'} alt="avatar del usuario" />}>
             <div className='flex flex-col'>
               <button aria-label='account' onClick={() => navigate('/my-account')} className='hover:bg-[#303030] text-start p-2 font-normal text-sm flex gap-2'>
                 <UserIcon className='w-5 h-5' />

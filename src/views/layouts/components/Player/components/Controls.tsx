@@ -30,50 +30,50 @@ export default function Controls () {
       <div className='flex flex-row gap-4 justify-center items-center w-full'>
         {repeatPlayList
           ? (<ToolTip text='Repetir la lista'>
-            <button className='flex justify-center items-center' onClick={handleRepeat}>
+            <button aria-label='Repetir lista de reproducción' className='flex justify-center items-center' onClick={handleRepeat}>
               <RepeatPlayListIcon className='text-white w-7 h-7' />
             </button>
           </ToolTip>)
           : (<ToolTip text='Repetir canción en bucle'>
-            <button className='flex justify-center items-center' onClick={handleRepeat}>
+            <button aria-label='Repetir la misma canción' className='flex justify-center items-center' onClick={handleRepeat}>
               <RepeatSongIcon className='text-white w-7 h-7' />
             </button>
           </ToolTip>)
         }
         <div className='flex lg:gap-4 gap-7 flex-1 lg:flex-none justify-center'>
           <ToolTip text='Canción Anterior'>
-            <button className='grid place-content-center' onClick={prevSong}>
+            <button aria-label='Reproducir la canción anterior' className='grid place-content-center' onClick={prevSong}>
               <PreviousIcon className='lg:text-white/80 text-white hover:text-white w-7 h-7' />
             </button>
           </ToolTip>
-          <button onClick={handlePlay} className='bg-white hover:scale-105 duration-150 rounded-full lg:w-9 w-11 h-11 lg:h-9 grid place-content-center'>
+          <button aria-label={`${playing ? 'Pausar Canción' : 'Reproducir Canción'}`} onClick={handlePlay} className='bg-white hover:scale-105 duration-150 rounded-full lg:w-9 w-11 h-11 lg:h-9 grid place-content-center'>
             {playing ? <PauseIcon className='text-black' /> : <PlayIcon className='text-black' />}
           </button>
           <ToolTip text='Siguiente Canción'>
-            <button className='grid place-content-center' onClick={nextSong}>
+            <button aria-label='Reproducir la siguiente cancion' className='grid place-content-center' onClick={nextSong}>
               <NextIcon className='lg:text-white/80 text-white hover:text-white w-7 h-7' />
             </button>
           </ToolTip>
         </div>
-        <button className='grid place-content-center'>
+        <div className='grid place-content-center'>
           <RandomIcon className='duration-150 w-7 h-7 hidden lg:block' />
           <Drawer>
-            <DrawerTrigger>
+            <DrawerTrigger aria-label='Abrir reproductor'>
               <ListIcon className='duration-150 w-7 h-7 lg:hidden block' />
             </DrawerTrigger>
             <DrawerContainer isMobile>
               <DrawerContentMobile />
             </DrawerContainer>
           </Drawer>
-        </button>
+        </div>
       </div>
       <div className='flex lg:flex-row flex-col gap-2 items-center w-full justify-center'>
         <span className='lg:block hidden text-xs w-9'>{formatTime(currentTime)}</span>
         <Slider className='lg:flex hidden lg:w-[450px] w-full' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />
         <span className='lg:block hidden text-xs w-9'>{formatTime(audioRef.current?.duration)}</span>
         <div className='w-full flex lg:hidden flex-col items-start px-1'>
-          <h6 className='font-light text-white text-lg truncate'>{currentSong?.name || 'Título de la canción'}</h6>
-          <h6 className='font-light text-white/80 text-sm truncate mb-1'>{currentSong?.artist || 'Nombre del artista'}</h6>
+          <p className='font-light text-white text-lg truncate'>{currentSong?.name || 'Título de la canción'}</p>
+          <p className='font-light text-white/80 text-sm truncate mb-1'>{currentSong?.artist || 'Nombre del artista'}</p>
         </div>
         <div className='lg:hidden w-full px-1'>
           <Slider className='w-full' onValueChange={handleChange} value={[currentTime]} defaultValue={[0.05]} min={0} max={audioRef.current?.duration} step={0.01} />

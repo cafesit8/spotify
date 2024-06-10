@@ -15,7 +15,7 @@ export default function TooltipButton ({ name, tooltiName, children, className }
       <TooltipProvider delayDuration={150}>
         <Tooltip>
           <TooltipTrigger>
-            <PopoverTrigger className={`hover:scale-105 grid place-content-center duration-150 ${className}`}>
+            <PopoverTrigger aria-label='tooltip' className={`hover:scale-105 grid place-content-center duration-150 ${className}`}>
               {name}
             </PopoverTrigger>
           </TooltipTrigger>
