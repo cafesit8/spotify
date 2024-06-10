@@ -24,8 +24,8 @@ export default function DrawerContentMobile () {
             <img className='rounded-md' width={50} src={song?.song_cover?.url || 'https://t2.tudocdn.net/700696?w=824&h=494'} alt={`Portada de la cancion ${song?.song_cover?.url}`} />
           </picture>
           <div>
-            <h6 className='font-light text-white text-base w-full truncate'>{song?.name || 'Título de la canción'}</h6>
-            <h6 className='font-light text-white/80 text-sm w-full truncate'>{song?.artist || 'Nombre del artista'}</h6>
+            <p className='font-light text-white text-base w-full truncate'>{song?.name || 'Título de la canción'}</p>
+            <p className='font-light text-white/80 text-sm w-full truncate'>{song?.artist || 'Nombre del artista'}</p>
           </div>
         </article>
       ))}
