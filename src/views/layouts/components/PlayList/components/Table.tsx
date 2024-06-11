@@ -8,7 +8,6 @@ type Props = {
 }
 
 export default function Table ({ collapse, musicFiltered }: Props) {
-  console.log('table')
   return (
     <table className={`${collapse ? 'divide-y' : ''} w-full divide-white/40`}>
       <thead>

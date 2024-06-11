@@ -6,6 +6,7 @@ import { AddIcon, HeartIcon, OptionsIcon } from '@/icons/icons'
 import TooltipButton from '@/components/ui/TooltipButton'
 import { toast } from 'sonner'
 import { useCurrentSong } from '@/store/currentSong'
+import { useCallback } from 'react'
 
 type Props = {
   collapse?: boolean
@@ -20,20 +21,21 @@ export default function Row ({ song, collapse }: Props) {
   const currentSong = useCurrentSong(state => state.currentSong)
   const validate = playList.some((item) => item.id === song.id)
 
-  function handlePlayList () {
+  const handlePlayList = useCallback(() => {
     if (validate) {
       toast.info('Esta cancion ya se encuentra en la fila')
     } else {
       addSongToPlayList(song)
       toast.success('Canción agregada a la fila')
     }
-  }
+  }, [song, addSongToPlayList, validate])
 
-  function handleClick () {
+  const handleClick = useCallback(() => {
     setCurrentSong(song)
     setCurrentMusic(song)
     setPlaying(true)
-  }
+  }, [song, setCurrentSong, setCurrentMusic, setPlaying])
+
   return (
     <tr className='hover:bg-[#222222] duration-200 cursor-pointer'>
       <td className={`${collapse ? 'rounded-tr-none rounded-br-none' : 'rounded-tr-lg rounded-br-lg'} rounded-tl-lg rounded-bl-lg`}>
