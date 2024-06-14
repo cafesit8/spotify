@@ -17,10 +17,10 @@ export default function MyAccount () {
           <img className='w-[200px]' src='/Spotify_Full_Logo_RGB_Green.webp' alt="Logo de spotify" />
           <div className='grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(370px,1fr))]'>
             <div className='flex flex-col gap-4 w-full'>
-              <Input label="Nombre" name='name' placeholder="Pepito" register={register} errors={errors} />
-              <Input label="Apellidos" name='surname' placeholder="Perez Perez" register={register} errors={errors} />
-              <Input label="Nombre de Usuario" name='username' placeholder="pepito88" register={register} errors={errors} />
-              <Input label="Correo" name='email' placeholder="example@example.com" register={register} errors={errors} />
+              <Input label="Nombre" name='name' placeholder="ejmp: Pepito" register={register} errors={errors} />
+              <Input label="Apellidos" name='surname' placeholder="ejmp: Perez Perez" register={register} errors={errors} />
+              <Input label="Nombre de Usuario" name='username' placeholder="ejmp: pepito88" register={register} errors={errors} />
+              <Input label="Correo" name='email' placeholder="ejmp: example@example.com" register={register} errors={errors} />
               <label className="text-white/50">
                 Creación de la cuenta
                 <input type="date" disabled {...register('date')} className='custom-date-input w-full bg-[#141414] border border-gray-600 p-1 rounded-md text-white/70 font-thin pl-2' />

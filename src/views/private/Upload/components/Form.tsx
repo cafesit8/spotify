@@ -32,8 +32,8 @@ export default function Form () {
       <img className='w-[200px]' fetchPriority='high' src='/Spotify_Full_Logo_RGB_Green.webp' alt="Logo de spotify" />
       <div className='flex gap-4 w-full'>
         <div className='w-full flex flex-col gap-4'>
-          <Input label="Nombre de la canción" name='name' placeholder="Lovely" register={register} errors={errors} />
-          <Input label="Artista" name='artist' placeholder="Billi Eilish" register={register} errors={errors} />
+          <Input label="Nombre de la canción" name='name' placeholder="ejmp: Lovely" register={register} errors={errors} />
+          <Input label="Artista" name='artist' placeholder="ejmp: Billi Eilish" register={register} errors={errors} />
           <SelectUi label='Categoria' list={categoriesList} control={control} name='category_id' errors={errors} />
           {song
             ? (
@@ -48,7 +48,7 @@ export default function Form () {
             </label>}
         </div>
         <div className='w-full flex flex-col gap-4'>
-          <Input label="Álbum" name='album' placeholder="Happier Than Ever" register={register} errors={errors} />
+          <Input label="Álbum" name='album' placeholder="ejmp: Happier Than Ever" register={register} errors={errors} />
           <>
             <label>
               Lanzamiento de la Canción
