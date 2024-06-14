@@ -1,6 +1,8 @@
+import { updateUser } from '@/services/api/updateUser'
 import { useUserInfo } from '@/store/userInfo'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 const schema = z.object({
@@ -14,7 +16,8 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>
 
 export default function useMyAccount () {
-  const user = useUserInfo(state => state.user)
+  const { user, setUser } = useUserInfo(state => state)
+  const userInfo = useUserInfo(state => state)
   const { register, formState: { errors, isSubmitting }, handleSubmit } = useForm<FormFields>({
     defaultValues: {
       name: user?.name,
@@ -25,14 +28,20 @@ export default function useMyAccount () {
     },
     resolver: zodResolver(schema)
   })
-  const userInfo = useUserInfo(state => state.user)
 
-  function sendData (data: FormFields) {
-    console.table(data)
+  async function sendData (data: FormFields) {
+    try {
+      const res = await updateUser(data, user?.id)
+      if (res.data.id) {
+        setUser({ data: res.data, access_token: userInfo.access_token, token_type: userInfo.token_type })
+        toast.success('Usuario actualizado correctamente')
+      }
+    } catch (error) {
+      toast.error('Error al actualizar el usuario')
+    }
   }
-
   return {
-    userInfo,
+    user,
     sendData,
     register,
     errors,

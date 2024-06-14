@@ -5,7 +5,7 @@ import { toast } from 'sonner'
 import useMyAccount from './hooks/useMyAccount'
 
 export default function MyAccount () {
-  const { handleSubmit, register, errors, sendData, isSubmitting, userInfo } = useMyAccount()
+  const { handleSubmit, register, errors, sendData, isSubmitting, user } = useMyAccount()
   return (
     <section className="w-full h-full flex flex-col gap-7 overflow-y-auto">
       <header>
@@ -33,7 +33,7 @@ export default function MyAccount () {
                     <EditIcon className='w-10 h-10' />
                     <span className='text-xl'>Elegir foto</span>
                   </div>
-                  <img className='w-full h-full object-cover' src={userInfo?.photo_profile.url} alt={`Portada del usuario ${userInfo?.photo_profile.url}`} />
+                  <img className='w-full h-full object-cover' src={user?.photo_profile.url} alt={`Portada del usuario ${user?.photo_profile.url}`} />
                   <input onChange={() => toast.error('Actualizar la imagen no está disponible en estos momentos :(')} type="file" accept='image/*' className='hidden' />
                 </div>
               </label>

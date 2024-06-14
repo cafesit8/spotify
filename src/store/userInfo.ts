@@ -6,7 +6,7 @@ export type UserInfo = {
   access_token: string
   user: User | null
   token_type: string
-  setUser: (info: UserInfo) => void
+  setUser: (info: any) => void
 }
 
 export const useUserInfo = create(persist<UserInfo>(
