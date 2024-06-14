@@ -8,7 +8,7 @@ import { toast } from 'sonner'
 export default function PlayList ({ url, subtitle }: { url: string, subtitle: string }) {
   const [playList, setPlayList] = useState<Music[]>([])
   const { ref } = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     onChange (inView) {
       inView && getData()
     }
