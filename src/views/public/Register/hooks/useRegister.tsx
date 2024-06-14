@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { registerUser } from '@/services/api/registerUser'
 import { useUserInfo } from '@/store/userInfo'
+import { modifyCloudinaryUrl } from '@/services/modifyCloudinaryUrl'
 
 const STATUS = {
   IDLE: 'idle',
@@ -27,6 +28,7 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>
 
 type StatusProps = typeof STATUS[keyof typeof STATUS]
+
 export default function useRegister () {
   const [status, setStatus] = useState<StatusProps>(STATUS.IDLE)
   const [photo, setPhoto] = useState<null | string>(null)
@@ -45,10 +47,10 @@ export default function useRegister () {
       formData.append('upload_preset', 'nofirma')
       formData.append('folder', 'spotify/users')
       const response = await uploadImage(formData)
-      console.log(response)
+      const url = modifyCloudinaryUrl(response.secure_url)
       if (response.secure_url) {
-        setPhoto(response.secure_url)
-        setValue('url', response.secure_url)
+        setPhoto(url)
+        setValue('url', url)
         setStatus(STATUS.SUCCESS)
       } else {
         setStatus(STATUS.ERROR)

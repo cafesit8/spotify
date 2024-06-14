@@ -1,5 +1,6 @@
 import { createSong } from '@/services/api/createSong'
 import { uploadImage } from '@/services/api/uploadImage'
+import { modifyCloudinaryUrl } from '@/services/modifyCloudinaryUrl'
 import { useUserInfo } from '@/store/userInfo'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ChangeEvent, useState } from 'react'
@@ -22,7 +23,7 @@ const schema = z.object({
 export type FormFields = z.infer<typeof schema>
 
 export default function useUploadSong () {
-  const [image, setImage] = useState()
+  const [image, setImage] = useState<string | null>(null)
   const [song, setSong] = useState()
   const { register, formState: { errors, isSubmitting }, setValue, handleSubmit, control } = useForm<FormFields>({
     resolver: zodResolver(schema)
@@ -41,9 +42,10 @@ export default function useUploadSong () {
       formData.append('upload_preset', 'nofirma')
       formData.append('folder', `spotify/${userInfo?.name}/cover_image`)
       const response = await uploadImage(formData, 'image')
+      const url = modifyCloudinaryUrl(response.secure_url)
       if (response.secure_url) {
-        setValue('cover', response.secure_url)
-        setImage(response.secure_url)
+        setValue('cover', url)
+        setImage(url)
       }
     }
   }
