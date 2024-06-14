@@ -9,6 +9,7 @@ export default {
   ],
   theme: {
     screens: {
+      sm: '640px',
       lg: '1125px'
     },
     container: {

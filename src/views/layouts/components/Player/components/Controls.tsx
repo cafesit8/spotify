@@ -26,7 +26,7 @@ export default function Controls () {
     }
   }
   return (
-    <div className="lg:flex-1 w-full mx-auto text-center flex lg:flex-col flex-col-reverse items-center lg:gap-5 gap-3 lg:p-0 pb-8 p-4 justify-center">
+    <div className="lg:flex-1 w-full mx-auto text-center flex lg:flex-col flex-col-reverse items-center gap-3 lg:p-0 pb-8 p-4 justify-center">
       <div className='flex flex-row gap-4 justify-center items-center w-full'>
         {repeatPlayList
           ? (<ToolTip text='Repetir la lista'>
