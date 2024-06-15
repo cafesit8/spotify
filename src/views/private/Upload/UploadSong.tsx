@@ -5,7 +5,7 @@ const Header = lazy(() => import('./components/Header.tsx'))
 
 export default function UploadSong () {
   return (
-    <section className="flex flex-col gap-7 overflow-y-auto">
+    <section className="flex flex-col gap-7 overflow-y-auto lg:pb-0 pb-3">
       <Suspense fallback={<Loading transparent />}>
         <Header />
       </Suspense>

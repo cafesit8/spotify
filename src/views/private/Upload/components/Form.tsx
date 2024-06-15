@@ -30,24 +30,11 @@ export default function Form () {
   return (
     <form onSubmit={handleSubmit(sendData)} className="flex flex-col gap-4">
       <img className='w-[200px]' fetchPriority='high' src='/Spotify_Full_Logo_RGB_Green.webp' alt="Logo de spotify" />
-      <div className='flex gap-4 w-full'>
-        <div className='w-full flex flex-col gap-4'>
+      <div className='flex flex-col gap-4 w-full'>
+        <div className='w-full grid lg:grid-cols-2 grid-cols-1 gap-4'>
           <Input label="Nombre de la canción" name='name' placeholder="ejmp: Lovely" register={register} errors={errors} />
           <Input label="Artista" name='artist' placeholder="ejmp: Billi Eilish" register={register} errors={errors} />
           <SelectUi label='Categoria' list={categoriesList} control={control} name='category_id' errors={errors} />
-          {song
-            ? (
-              <WaveSounds audioUrl={song} />
-            )
-            : <label className={`cursor-pointer ${errors.url ? 'border-red-400' : ''} border-[1px] min-h-[150px] mt-1 flex justify-center items-center border-dashed rounded-md p-4 text-center`}>
-              <div className='flex flex-col items-center gap-1'>
-                <UploadMusicIcon />
-                <p>{loadingSong ? 'Cargando...' : 'Selecione una Canción'}</p>
-              </div>
-              <input onChange={handleUploadMusic} type="file" accept='audio/*' className='hidden' />
-            </label>}
-        </div>
-        <div className='w-full flex flex-col gap-4'>
           <Input label="Álbum" name='album' placeholder="ejmp: Happier Than Ever" register={register} errors={errors} />
           <>
             <label>
@@ -57,13 +44,26 @@ export default function Form () {
             {errors.realease_date && <span className='text-red-400 text-xs -mt-4'>{errors.realease_date.message}</span>}
           </>
           <Input label="Duración de la cancion" name='duration' disabled placeholder="La duración se calculará automáticamente" register={register} errors={errors} />
+        </div>
+        <div className='w-full flex lg:flex-row flex-col gap-4'>
+          {song
+            ? (
+              <WaveSounds audioUrl={song} />
+            )
+            : <label className={`cursor-pointer ${errors.url ? 'border-red-400' : ''} w-full border-[1px] min-h-[150px] mt-1 flex justify-center items-center border-dashed rounded-md p-4 text-center`}>
+              <div className='flex flex-col items-center gap-1'>
+                <UploadMusicIcon />
+                <p>{loadingSong ? 'Cargando...' : 'Selecione una Canción'}</p>
+              </div>
+              <input onChange={handleUploadMusic} type="file" accept='audio/*' className='hidden' />
+            </label>}
           {image
             ? (
               <div className='border border-dashed rounded-lg w-full max-h-[200px] block'>
                 <img className='w-full h-full object-contain' src={image} alt="Imagen de la canción recién subida" />
               </div>
             )
-            : <label className={`cursor-pointer ${errors.cover ? 'border-red-400' : ''} border-[1px] mt-1 flex justify-center items-center border-dashed rounded-md p-4 text-center h-[150px]`}>
+            : <label className={`cursor-pointer ${errors.cover ? 'border-red-400' : ''} w-full border-[1px] mt-1 flex justify-center items-center border-dashed rounded-md p-4 text-center h-[150px]`}>
               <div className='flex flex-col items-center gap-1'>
                 <UploadImageIcon />
                 <p>{loadingImage ? 'Cargando...' : 'Portada de la Canción'}</p>

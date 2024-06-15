@@ -7,15 +7,15 @@ import useMyAccount from './hooks/useMyAccount'
 export default function MyAccount () {
   const { handleSubmit, register, errors, sendData, isSubmitting, user } = useMyAccount()
   return (
-    <section className="w-full h-full flex flex-col gap-7 overflow-y-auto">
+    <section className="w-full h-full flex flex-col gap-7 overflow-y-auto lg:pb-0 pb-3">
       <header>
-        <h3 className="text-5xl font-semibold">Editar Perfil</h3>
-        <p className="text-white/80 text-balance">En esta sección podrás editar los datos de tu perfil como más te gusten</p>
+        <h3 className="lg:text-5xl text-xl font-semibold">Editar Perfil</h3>
+        <p className="text-white/80 text-balance lg:text-base text-sm">En esta sección podrás editar los datos de tu perfil como más te gusten</p>
       </header>
-      <form onSubmit={handleSubmit(sendData)} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit(sendData)} className="w-full flex flex-col gap-4">
         <div className='flex flex-col gap-7'>
           <img className='w-[200px]' src='/Spotify_Full_Logo_RGB_Green.webp' alt="Logo de spotify" />
-          <div className='grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(370px,1fr))]'>
+          <div className='grid gap-4 lg:[grid-template-columns:repeat(auto-fit,minmax(370px,1fr))] grid-template-columns:repeat(auto-fit,minmax(270px,1fr))]'>
             <div className='flex flex-col gap-4 w-full'>
               <Input label="Nombre" name='name' placeholder="ejmp: Pepito" register={register} errors={errors} />
               <Input label="Apellidos" name='surname' placeholder="ejmp: Perez Perez" register={register} errors={errors} />
@@ -27,15 +27,15 @@ export default function MyAccount () {
               </label>
             </div>
             <div className='w-full overflow-hidden flex justify-center rounded-full'>
-              <label className='cursor-pointer max-w-[370px] rounded-full overflow-hidden h-auto block'>
-                <div className='relative group/item'>
-                  <div className='text-white absolute flex flex-col justify-center items-center inset-0 m-auto group/edit group-hover/item:z-30 -z-10 bg-black/60 '>
+              <label className='cursor-pointer lg:max-w-[370px] rounded-full overflow-hidden h-auto block'>
+                <picture className='relative block lg:max-w-[370px] group/item'>
+                  <div className='text-white absolute flex flex-col justify-center items-center inset-0 m-auto group/edit group-hover/item:z-30 lg:-z-10 z-30 bg-black/60 '>
                     <EditIcon className='w-10 h-10' />
                     <span className='text-xl'>Elegir foto</span>
                   </div>
-                  <img className='w-full h-full object-cover' src={user?.photo_profile.url} alt={`Portada del usuario ${user?.photo_profile.url}`} />
+                  <img className='w-full h-full object-cover' src={user?.photo_profile.url || '/user.jpg'} alt={`Portada del usuario ${user?.photo_profile.url}`} />
                   <input onChange={() => toast.error('Actualizar la imagen no está disponible en estos momentos :(')} type="file" accept='image/*' className='hidden' />
-                </div>
+                </picture>
               </label>
             </div>
           </div>
