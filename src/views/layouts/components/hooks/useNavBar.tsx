@@ -7,7 +7,9 @@ export default function useNavBar () {
   const navigate = useNavigate()
   async function handleLogOut () {
     localStorage.removeItem('userInfo')
-    localStorage.removeItem('currentMusicInfo')
+    localStorage.removeItem('currentSong')
+    localStorage.removeItem('currentSongIndex')
+    localStorage.removeItem('playList')
     toast.success('Adiós, Vuelve Pronto...')
     navigate('/login')
   }
