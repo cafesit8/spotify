@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 const Header = lazy(() => import('./Components/Header'))
+const CategoryList = lazy(() => import('./Components/CategoryList'))
 const PlayList = lazy(() => import('./Components/PlayList'))
 
 export default function Search () {
@@ -8,6 +9,7 @@ export default function Search () {
       <Suspense fallback={null}>
         <Header />
         <PlayList />
+        <CategoryList />
       </Suspense>
     </section>
   )
