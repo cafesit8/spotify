@@ -3163,7 +3163,7 @@ snapshots:
       '@babel/parser': 7.24.7
       '@babel/template': 7.24.7
       '@babel/traverse': 7.24.7
-      '@babel/types': 7.24.6
+      '@babel/types': 7.24.7
       convert-source-map: 2.0.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
@@ -3249,7 +3249,7 @@ snapshots:
 
   '@babel/parser@7.24.7':
     dependencies:
-      '@babel/types': 7.24.6
+      '@babel/types': 7.24.7
 
   '@babel/runtime@7.24.6':
     dependencies:
@@ -3547,7 +3547,7 @@ snapshots:
       '@antfu/ni': 0.21.12
       '@axiomhq/js': 1.0.0-rc.3
       '@babel/core': 7.24.6
-      '@babel/types': 7.24.6
+      '@babel/types': 7.24.7
       '@clack/prompts': 0.7.0
       cli-high: 0.4.2
       diff: 5.2.0

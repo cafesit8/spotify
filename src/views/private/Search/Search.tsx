@@ -50,7 +50,7 @@ export default function Search () {
               <img className='absolute w-[130px] right-0 transform rotate-[20deg] -bottom-5' src="https://i.scdn.co/image/ab67616d00001e022a038d3bf875d23e4aeaa84e" alt="Portada de la sección Pop" />
             </div>
           </article>
-          <article className='aspect-square w-full h-full relative rounded-lg bg-[#c79d43] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
+          <article className='aspect-square w-full h-full relative rounded-lg bg-[#8f6c22] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
             <div className='w-1/2'>
               <h4 className='lg:text-2xl text-lg font-bold'>Pop latino</h4>
             </div>
