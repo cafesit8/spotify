@@ -23,27 +23,27 @@ export const categories = [{
     alt: 'Portada de la sección No copyright'
   }
 }, {
-  id: 4,
-  name: 'Electrónicas',
+  id: 5,
+  name: 'Pop',
   color: '#c79d43',
   img: {
     src: 'https://i.scdn.co/image/ab67616d00001e022a038d3bf875d23e4aeaa84e',
+    alt: 'Portada de la sección Pop'
+  }
+}, {
+  id: 4,
+  name: 'Electrónicas',
+  color: '#c4885e',
+  img: {
+    src: 'https://i.scdn.co/image/ab67616d0000b273660ee24281a547103f466ff5',
     alt: 'Portada de la sección Electrónicas'
   }
 }, {
   id: 6,
   name: 'Pop latino',
-  color: '#c4885e',
-  img: {
-    src: 'https://i.scdn.co/image/ab67616d0000b273660ee24281a547103f466ff5',
-    alt: 'Portada de la sección Pop latino'
-  }
-}, {
-  id: 5,
-  name: 'Pop',
   color: '#8f6c22',
   img: {
     src: 'https://i.scdn.co/image/ab67616d0000b2738aa4f3ab66823042785b7f17',
-    alt: 'Portada de la sección Pop'
+    alt: 'Portada de la sección Pop latino'
   }
 }]

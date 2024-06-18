@@ -1,12 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 
-// function handleClick (id: number) {
-//   fetch(`${API_URL}/songs/categories/${id}`)
-//     .then(res => res.json())
-//     .then(data => console.log(data))
-//     .catch(() => toast.error('Hubo un error al cargar las canciones'))
-// }
-
 export default function Card ({ category }: any) {
   const navigate = useNavigate()
   function handleClick () {

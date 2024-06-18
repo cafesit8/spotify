@@ -24,6 +24,7 @@ export default function Header () {
         <p className="text-white/80 lg:text-base text-sm text-balance">Asegurate de escribir el nombre de la cancion, de no encontrarla puedes ayudar a publicar dando click en el botón de "Publicar Canción"</p>
       </div>
       <Input
+        defaultValue={searchParams.get('song') || ''}
         onChange={(e: ChangeEvent<HTMLInputElement>) => handleSearch(e.target.value)}
         placeholder='¿Qué quieres reproducir?'
         name='search'
