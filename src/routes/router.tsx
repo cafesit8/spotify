@@ -9,6 +9,7 @@ const Dashboard = lazy(() => import('@/views/private/Dashboard/Dashboard'))
 const Search = lazy(() => import('@/views/private/Search/Search'))
 const UploadSong = lazy(() => import('@/views/private/Upload/UploadSong'))
 const MyAccount = lazy(() => import('@/views/private/MyCount/MyAccount'))
+const SongList = lazy(() => import('@/views/private/Search/SongsListByCategory/SongList'))
 
 export const routes = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ export const routes = createBrowserRouter([
       {
         path: '/search',
         element: <Suspense fallback={<Loading transparent />}><Search /></Suspense>,
+        errorElement: <Error transparent />
+      },
+      {
+        path: '/search/:id',
+        element: <Suspense fallback={<Loading transparent />}><SongList /></Suspense>,
         errorElement: <Error transparent />
       },
       {

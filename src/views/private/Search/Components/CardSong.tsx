@@ -1,18 +1,10 @@
 import { Music } from '@/types/musicList'
-import ButtonPlay from './ButtonPlay'
+import ButtonPlay from '../../Dashboard/Components/ButtonPlay'
+import { useCallback } from 'react'
 import { useCurrentSong } from '@/store/currentSong'
 import { useCurrentMusicInfo } from '@/store/currentPlayList'
-import { memo, useEffect, useCallback } from 'react'
 
-function preloadImage (url: string) {
-  const link = document.createElement('link')
-  link.rel = 'preload'
-  link.as = 'image'
-  link.href = url
-  document.head.appendChild(link)
-}
-
-export function Card ({ song }: { song: Music }) {
+export default function CardSong ({ song }: { song: Music }) {
   const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
   const setCurrentMusic = useCurrentMusicInfo((state) => state.setCurrentMusic)
   const { currentSong, setPlaying } = useCurrentSong(state => state)
@@ -26,12 +18,6 @@ export function Card ({ song }: { song: Music }) {
     setCurrentMusic(song)
     setPlaying(true)
   }, [isPlaying, setCurrentSong, setCurrentMusic, setPlaying, song])
-
-  useEffect(() => {
-    if (song?.song_cover?.url) {
-      preloadImage(song.song_cover.url)
-    }
-  }, [song])
 
   return (
     <article onClick={handleClick} className="group lg:hover:bg-[#222222] shadow-lg hover:shadow-xl  rounded-md ransi transition-all duration-300 aspect-square w-full" >
@@ -54,5 +40,3 @@ export function Card ({ song }: { song: Music }) {
     </article>
   )
 }
-
-export const CardMemo = memo(Card)

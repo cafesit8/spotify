@@ -1,5 +1,3 @@
-// import { API_URL } from '@/config'
-// import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 
 // function handleClick (id: number) {
@@ -12,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 export default function Card ({ category }: any) {
   const navigate = useNavigate()
   function handleClick () {
-    navigate(`/category/${category.id}`)
+    navigate(`/search/${category.id}`)
   }
   return (
     <article onClick={handleClick} className={`aspect-square w-full h-full relative rounded-lg bg-[${category.color}] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between`}>
