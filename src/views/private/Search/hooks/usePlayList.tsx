@@ -10,10 +10,12 @@ export default function usePlayList () {
   const song = searchParams.get('song')?.toString()
 
   useEffect(() => {
-    fetch(`${API_URL}/songs/search/${song}`)
-      .then(res => res.json())
-      .then(data => setSongList(data.data))
-      .catch(() => toast.error('Hubo un error al cargar las canciones'))
+    if (song) {
+      fetch(`${API_URL}/songs/search/${song}`)
+        .then(res => res.json())
+        .then(data => setSongList(data.data))
+        .catch(() => toast.error('Hubo un error al cargar las canciones'))
+    }
   }, [song])
 
   return {
