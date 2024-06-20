@@ -8,10 +8,10 @@ export default function Register () {
   const { handleFileChange, photo, status, STATUS, register, errors, handleSubmit, isSubmitting, sendData } = useRegister()
 
   return (
-    <main className="w-full min-h-screen bg-black grid place-content-center text-white">
-      <form onSubmit={handleSubmit(sendData)} className="bg-[#242424] w-[400px] p-4 rounded-lg flex flex-col gap-4">
-        <img className='w-[100px] aspect-square m-auto' src={logo} alt="logo de spotify" title='logo de spotify' />
-        <h1 className='m-auto text-2xl font-semibold'>Regístrate</h1>
+    <main className="w-full min-h-dvh overflow-y-auto bg-black grid place-content-center text-white py-7">
+      <form onSubmit={handleSubmit(sendData)} className="bg-[#242424] sm:w-[400px] w-[300px] p-4 rounded-lg flex flex-col gap-4">
+        <img className='sm:w-[100px] w-[50px] aspect-square m-auto' src={logo} alt="logo de spotify" title='logo de spotify' />
+        <h1 className='m-auto sm:text-2xl text-xl font-semibold'>Regístrate</h1>
         <Input name='name' label='Nombre' errors={errors} register={register} placeholder='Pepito' />
         <Input name='surname' label='Apellido' errors={errors} register={register} placeholder='Perez Perez' />
         <Input name='username' label='Usuario' errors={errors} register={register} placeholder='pepito88' />
