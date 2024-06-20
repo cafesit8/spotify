@@ -4,7 +4,7 @@ export function modifyCloudinaryUrl (url: string) {
   }
   let modifiedUrl = url.replace(/\.jpg$/, '.webp')
   const uploadPosition = modifiedUrl.indexOf('/upload') + 8
-  const sizeParameter = 'w_300'
+  const sizeParameter = 'c_fill,w_300,h_300'
   modifiedUrl = [modifiedUrl.slice(0, uploadPosition), sizeParameter, modifiedUrl.slice(uploadPosition)].join('/')
 
   return modifiedUrl
