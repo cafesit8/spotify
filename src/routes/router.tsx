@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react'
 import { Navigate, createBrowserRouter } from 'react-router-dom'
 import Error from '@/views/public/Error'
 import Loading from '@/views/public/Loading'
+import ProtectedRoute from './ProtectedRoute'
 const Login = lazy(() => import('@/views/public/Login/Login'))
 const Register = lazy(() => import('@/views/public/Register/Register'))
 const DashboardLayout = lazy(() => import('@/views/layouts/DashboardLayout'))
@@ -24,7 +25,7 @@ export const routes = createBrowserRouter([
   },
   {
     path: '/',
-    element: <Suspense fallback={<Loading fullScreen />}><DashboardLayout /></Suspense>,
+    element: <Suspense fallback={<Loading fullScreen />}><ProtectedRoute><DashboardLayout /></ProtectedRoute></Suspense>,
     errorElement: <Error />,
     children: [
       { element: <Navigate to="/dashboard" />, index: true },
