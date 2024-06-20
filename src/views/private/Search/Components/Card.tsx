@@ -6,7 +6,7 @@ export default function Card ({ category }: any) {
     navigate(`/search/${category.id}`)
   }
   return (
-    <article onClick={handleClick} className={`aspect-square w-full h-full relative rounded-lg bg-[${category.color}] overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between`}>
+    <article onClick={handleClick} style={{ backgroundColor: category.color }} className='aspect-square w-full h-full relative rounded-lg overflow-hidden lg:p-4 p-3 pr-0 cursor-pointer flex justify-between'>
       <div className='w-1/2'>
         <h4 className='lg:text-2xl text-lg font-bold'>{category.name}</h4>
       </div>
