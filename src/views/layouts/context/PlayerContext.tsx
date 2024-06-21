@@ -26,7 +26,7 @@ export default function PlayerContext ({ children }: PlayerContextType) {
   const playList = useCurrentMusicInfo((state) => state.playList)
   const [repeatPlayList, setRepeatPlayList] = useState(true)
   const [currentTime, setCurrentTime] = useState(0)
-  const [volume, setVolume] = useState(0.25)
+  const [volume, setVolume] = useState(0.5)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const setCurrentSong = useCurrentSong(state => state.setCurrentSong)
   const currentSong = useCurrentSong(state => state.currentSong)

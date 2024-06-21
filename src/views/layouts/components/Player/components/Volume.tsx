@@ -43,7 +43,7 @@ export default function Volume () {
       <button onClick={handleMuted}>
         {renderIcon()}
       </button>
-      <Slider className='w-[150px]' onValueChange={handleVolume} value={[volume]} defaultValue={[0.25]} min={0} max={0.5} step={0.01} />
+      <Slider className='w-[150px]' onValueChange={handleVolume} value={[volume]} defaultValue={[0.5]} min={0} max={1} step={0.01} />
     </div>
   )
 }
