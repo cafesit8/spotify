@@ -26,7 +26,7 @@ export default function MyAccount () {
                 <input type="date" disabled {...register('date')} className='custom-date-input w-full bg-[#141414] border border-gray-600 p-1 rounded-md text-white/70 font-thin pl-2' />
               </label>
             </div>
-            <div className='w-full overflow-hidden flex justify-center rounded-full'>
+            <div className='w-full overflow-hidden flex justify-center items-center rounded-full'>
               <label className='cursor-pointer lg:max-w-[370px] rounded-full overflow-hidden h-auto block'>
                 <picture className='relative block lg:max-w-[370px] group/item'>
                   <div className='text-white absolute flex flex-col justify-center items-center inset-0 m-auto group/edit group-hover/item:z-30 lg:-z-10 z-30 bg-black/60 '>
