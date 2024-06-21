@@ -40,8 +40,8 @@ export default function Form () {
             <label>
               Lanzamiento de la Canción
               <input {...register('realease_date')} className={`${errors.realease_date ? 'border-red-400' : ''} custom-date-input w-full bg-[#141414] border p-1 rounded-md text-white/70 font-thin pl-2`} type="date" />
+              {errors.realease_date && <span className='text-red-400 text-xs -mt-4'>{errors.realease_date.message}</span>}
             </label>
-            {errors.realease_date && <span className='text-red-400 text-xs -mt-4'>{errors.realease_date.message}</span>}
           </>
           <Input label="Duración de la cancion" name='duration' disabled placeholder="La duración se calculará automáticamente" register={register} errors={errors} />
         </div>

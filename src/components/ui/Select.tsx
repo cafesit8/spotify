@@ -196,8 +196,8 @@ export default function SelectUi ({ label, list, placeHolder, errors, name, cont
             ))}
           </SelectContent>
         </Select>
+        {errorValidation && <span className="text-red-400 text-xs -mt-4">{errors[name]?.message}</span>}
       </label>
-      {errorValidation && <span className="text-red-400 text-xs -mt-4">{errors[name]?.message}</span>}
     </>
   )
 }

@@ -29,8 +29,8 @@ export function Input (props: InputProps) {
           )}
           {...restprops}
         />
+        {errorValidation && <span className='text-red-400 -mt-4 text-xs'>{errors[name]?.message}</span>}
       </label>
-      {errorValidation && <span className='text-red-400 -mt-4 text-xs'>{errors[name]?.message}</span>}
     </>
   )
 }
