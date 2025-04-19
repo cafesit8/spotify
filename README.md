@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+# 🎵 Spotify Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¡Bienvenido al clon de Spotify! Esta es una aplicación web que emula la interfaz y funcionalidades básicas de Spotify, desarrollada con tecnologías modernas para ofrecer una experiencia de usuario fluida y atractiva.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** con **TypeScript**: Para construir una interfaz de usuario dinámica y tipada.
+- **Vite**: Como bundler ultrarrápido para desarrollo y producción.
+- **Tailwind CSS**: Para estilos rápidos y responsivos.
+- **ESLint**: Para mantener un código limpio y consistente.
+- **Vercel**: Despliegue continuo y hosting.
 
-## Expanding the ESLint configuration
+## 🖥️ Vista Previa
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![Vista previa de la aplicación](./public/preview.png)
 
-- Configure the top-level `parserOptions` property like this:
+## 📦 Instalación
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. **Clona el repositorio:**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+   ```bash
+   git clone https://github.com/cafesit8/spotify.git
+   cd spotify
