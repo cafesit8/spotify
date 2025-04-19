@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react'
 import Loading from '@/views/public/Loading'
 import HeaderSkeleton from './Skeleton/HeaderSkeleton'
-const Header = lazy(() => import('./components/Header'))
+const Header = lazy(() => import('./Components/Header'))
 const Ncs = lazy(() => import('./Sections/NCS/Ncs'))
 const Anime = lazy(() => import('./Sections/Anime/Anime'))
 const CncoSection = lazy(() => import('./Sections/CNCO/CncoSection'))

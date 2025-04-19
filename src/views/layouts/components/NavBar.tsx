@@ -21,7 +21,7 @@ export default function NavBar () {
             <RightIcon className='w-5 h-5' />
           </button>
         </ToolTip>
-        <span className='font-normal text-xl ml-1'>{userInfo?.name}, Bienvenido a Spotify 🙌</span>
+        <span className='font-normal text-xl ml-1'>{userInfo?.name ?? 'Invitado'}, Bienvenido a Spotify 🙌</span>
       </div>
       <div className='flex items-center gap-3 relative lg:w-auto w-full justify-between lg:justify-normal'>
         <Button onClick={() => navigate('/upload-song')} className='rounded-full px-5'>Publicar Canción</Button>
